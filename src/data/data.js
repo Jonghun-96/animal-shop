@@ -391,7 +391,7 @@ export const animals = [
     isSpecial: false,
     seedLikes: 66,
     img: '/images/animals/alpaca.png',
-    description: '침을 자주 뱉어요'
+    description: '침을 자주 뱉습니다'
   },    
   {
     id: 41,
@@ -442,6 +442,6 @@ export const animals = [
     seedLikes: 11,
     img: '/images/animals/milkcow.png',
     description: '4구 대형 우유통 보유'
-  },           
+  },  
 ]
 

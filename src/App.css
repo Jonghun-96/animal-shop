@@ -1,0 +1,37 @@
+
+body{
+  margin: 0; 
+  padding: 0;
+  padding-top: 56px;  /* navbar fixed때문에 사용 */
+}
+
+html{
+  scroll-behavior: auto !important
+} 
+/* 페이지 이동시 스크롤 최상단 */
+
+div{
+  box-sizing: border-box;
+}
+
+.componentList{
+  margin-top: 100px;
+  align-items: center;
+  text-align: center;
+}
+
+.componentList h3{
+  display: inline-block;
+  cursor: pointer;
+}   /* 홈페이지 추천친구들,인기친구들... 소제목 */
+
+.animalCard img{
+  border-radius: 10px;
+  width: auto;
+  height: 200px;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+
+

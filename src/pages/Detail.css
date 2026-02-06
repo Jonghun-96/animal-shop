@@ -1,0 +1,15 @@
+
+
+
+.detail{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.detail img{
+  border-radius: 10px;
+  width: 40%;
+  min-width: 160px;
+}

@@ -1,0 +1,64 @@
+
+.modal{
+  height: 96%;
+}
+
+.modalItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  width: 100%;
+  padding: 5px;
+  /* margin: 0 auto; */
+}
+
+.modalItem>div{
+  display: inline;
+  margin: 0 10px;
+}
+
+.emptyCart{
+  padding: 50px 0;
+  text-align: center;
+  color: #888;
+  font-size: 15px;
+}
+
+.itemName{
+  flex: 2;
+}
+
+.itemPrice{
+  width: 68px;
+}
+
+.itemCount{
+  flex: 1.4;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.modal img{
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.itemCount button{
+  /* width: 100%; */
+}
+
+.itemCount span{
+  display: inline-block;
+  width: 60px;
+  text-align: center;
+}
+
+
+.totalPrice{
+  padding: 0 60px;
+}

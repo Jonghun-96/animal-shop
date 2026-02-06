@@ -1,0 +1,10 @@
+
+
+.likeBtn{
+  border: none;
+  background: none;
+}
+
+.dark-mode .likeBtn{
+  color: #eee;
+} 

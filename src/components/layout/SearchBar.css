@@ -1,0 +1,12 @@
+
+
+
+.search-wrapper{
+  width: 40%;
+  margin: 0 auto;
+}
+
+.search-wrapper input::placeholder{
+  font-size: 12px;
+}
+

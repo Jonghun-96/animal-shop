@@ -1,0 +1,104 @@
+
+
+.theme-toggle-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 0px solid #3b3b3b;
+  border-radius: 4px;
+  background-color: #ffffff00;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.theme-toggle-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.5);
+}
+
+body.dark-mode {
+  background-color: #333;
+  color: #eaeaea;
+}
+
+.dark-mode .theme-toggle-btn {
+  border: 0px solid #eee;
+  color: #eee;
+}
+
+.dark-mode .theme-toggle-btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode .navbar.glass-navbar {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .form-control{
+  background-color: #333;
+  color: #eee;
+}
+
+.dark-mode .search-input input::placeholder{
+  background-color: #333;
+  color: #eee;
+}
+
+
+.dark-mode .list-group-item{
+  background-color: #333;
+}
+
+.dark-mode .modal-content{
+  background-color: #333;
+  color: #eee;
+}
+
+.dark-mode .itemPlus,.dark-mode .itemMinus{
+  background-color: #333;
+  color: #eee;
+}
+
+.dark-mode .itemPlus:hover, .dark-mode .itemMinus:hover{
+  background-color: #666;
+}
+
+.dark-mode .btn-close{
+  background-color: #eee;
+}
+
+
+
+.dark-mode .navbar-collapse{
+  background-color: #333333;
+}
+
+.dark-mode .nav-link{
+  color: #eee;
+}
+
+
+
+.dark-mode .dropdown-menu{
+  background-color: #333;
+
+}
+
+.dark-mode .dropdown-item{
+  color: #eee;  
+}
+
+.dark-mode .dropdown-item:hover{
+  color: #333;
+}
+
+.dark-mode .dropdown-item.active:hover{
+  color: #eee;
+}

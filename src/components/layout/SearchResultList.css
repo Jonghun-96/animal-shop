@@ -1,0 +1,44 @@
+
+
+.search-results .highlight {
+  background-color: #007bff;
+  color: white;
+}
+
+.dark-mode .search-results .highlight{
+  background-color: #004da0;
+}
+
+.dark-mode .search-object{
+  color: white;
+}
+
+
+.search-results {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  width: 30%;
+  z-index: 1050;
+  cursor: pointer;
+}
+
+.search-object{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-group-item{
+  max-width: 260px;
+} 
+
+
+.search-thumb{
+  background-color: #eee;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;  
+}
+

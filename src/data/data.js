@@ -91,7 +91,7 @@ export const animals = [
     isSpecial: false,
     seedLikes: 44,
     img: '/images/animals/fox.png',
-    description: '똑똑한 척하는 귀여움'
+    description: '여우짓 잘해요'
   },
   {
     id: 10,

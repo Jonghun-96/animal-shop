@@ -6,7 +6,7 @@ import './SignupPage.css';
 
 
 const MIN_ID_LENGTH = 4;
-const MIN_PW_LENGTH = 6;
+const MIN_PW_LENGTH = 4;
 const ID_REGEX = /^[a-zA-Z0-9]+$/;
 
 

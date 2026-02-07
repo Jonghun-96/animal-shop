@@ -241,7 +241,7 @@ export const animals = [
     isSpecial: true,
     seedLikes: 48,
     img: '/images/animals/rudolph_santa.png',
-    description: '크리스마스에 제일 바빠요'
+    description: '크리스마스 이브에 제일 바빠요'
   },
   {
     id: 25,
@@ -381,7 +381,7 @@ export const animals = [
     isSpecial: false,
     seedLikes: 80,
     img: '/images/animals/meerkat.png',
-    description: '당신을 지켜봅니다'
+    description: '당신이 뭐하는지 다 지켜봅니다'
   },  
   {
     id: 40,

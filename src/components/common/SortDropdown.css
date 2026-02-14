@@ -1,0 +1,15 @@
+
+.mb-3.dropdown.btn-group{
+  position: fixed;
+  padding-left: 3%;
+  margin-top: -33px;
+  width: 200px;
+}
+
+.mb-3.dropdown.btn-group .btn{
+  font-size: 13px;
+}
+
+.dropdown-item{
+  font-size: 13px;
+}

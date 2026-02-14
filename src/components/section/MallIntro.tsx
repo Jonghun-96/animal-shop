@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container, Row, Col, Form, Button } from 'react-bootstrap';
-import { images } from '@/assets/images/images.js'
+import { images } from '@/assets/images/images'
 import './MallIntro.css';
 
 function MallIntro() {

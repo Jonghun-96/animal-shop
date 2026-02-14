@@ -1,7 +1,7 @@
 
 import { useSelector } from 'react-redux';
 import { selectSpecialAnimals } from '../store/animalsSlice';
-import AnimalListPage from './AnimalListPage.jsx';
+import AnimalListPage from './AnimalListPage';
 
 
 
@@ -14,8 +14,9 @@ function Special() {
   return(
   <>
     <AnimalListPage 
+      className='list-title'
       animals={special}
-      title="조금 특별한 친구들"
+      title="특별한 친구들"
       likes={likes}
     />
   </>

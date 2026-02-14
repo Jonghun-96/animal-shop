@@ -1,12 +1,16 @@
 
 import LikeButton from './LikeButton';
+import './AnimalCard.css';
+import { Animal } from "../../types/animal";
 
 
+type Props = {
+  animal :Animal;
+  onClick :React.MouseEventHandler<HTMLDivElement>;
+}
 
 
-
-
-function AnimalCard({ animal, onClick }) {
+function AnimalCard({ animal, onClick }: Props) {
 
   return (
     <div className='animalCard' onClick={onClick}>

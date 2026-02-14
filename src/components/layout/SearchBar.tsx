@@ -3,8 +3,15 @@ import { Form, Button } from 'react-bootstrap';
 import './SearchBar.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SearchResultList from './SearchResultList';
+import { Animal } from '../../types/animal';
 
-function SearchBar({ animals }){
+
+type Props = {
+  animals: Animal[];
+};
+
+
+function SearchBar({ animals } :Props){
 
   const navigate = useNavigate();
   const location = useLocation();

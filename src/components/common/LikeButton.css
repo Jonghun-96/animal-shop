@@ -3,8 +3,39 @@
 .likeBtn{
   border: none;
   background: none;
+  position: absolute;
+  top: 170px;
+  left: 0%;
+  font-size: 20px;
+}
+
+.likeBtn span{
+  font-size: 12px;
 }
 
 .dark-mode .likeBtn{
   color: #eee;
 } 
+
+
+
+
+.likeCount {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: #333;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: 0.2s;
+  pointer-events: none;
+}
+
+.likeBtn:hover .likeCount {
+  opacity: 1;
+  transform: translateY(0px);
+}

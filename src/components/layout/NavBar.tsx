@@ -11,6 +11,8 @@ import { getLoginUser, logout } from '../../utils/authStorage';
 import { useNavigate } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 
+
+
 function NavBar() {
 
   const darkMode = useSelector(state => state.theme.darkMode);
@@ -85,7 +87,7 @@ function NavBar() {
 
             <NavDropdown title="종류별" id="category-dropdown">
               <NavDropdown.Item as={NavLink} to="/category" end>전체 동물</NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="/category/small">작은 동물</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="/category/small">소형 동물</NavDropdown.Item>
               <NavDropdown.Item as={NavLink} to="/category/medium">중형 동물</NavDropdown.Item>
               <NavDropdown.Item as={NavLink} to="/category/large">대형 동물</NavDropdown.Item>
               <NavDropdown.Item as={NavLink} to="/category/bird">새</NavDropdown.Item>

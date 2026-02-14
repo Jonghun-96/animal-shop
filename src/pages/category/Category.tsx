@@ -1,5 +1,5 @@
 import { Route, Routes, Link, useNavigate, Outlet } from 'react-router-dom';
-import { animals } from '../../data/data.js';
+import { animals } from '../../data/data';
 
 
 

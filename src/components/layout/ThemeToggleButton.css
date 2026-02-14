@@ -102,3 +102,7 @@ body.dark-mode .navbar.glass-navbar {
 .dark-mode .dropdown-item.active:hover{
   color: #eee;
 }
+
+.dark-mode .footer{
+  background-color: #444;
+}

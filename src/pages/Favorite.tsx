@@ -1,4 +1,4 @@
-import { animals } from '../data/data.js';
+import { animals } from '../data/data';
 
 
 

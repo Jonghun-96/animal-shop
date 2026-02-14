@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import AnimalCard from '../components/common/AnimalCard.jsx';
-import SortDropdown from '../components/common/SortDropdown.jsx';
-import { sortAnimals } from '../utils/sortAnimals.js';
+import AnimalCard from '../components/common/AnimalCard';
+import SortDropdown from '../components/common/SortDropdown';
+import { sortAnimals } from '../utils/sortAnimals';
 import './AnimalListPage.css';
 
 
@@ -20,11 +20,11 @@ function AnimalListPage({ animals, title, likes, showMore = false }){
 
   return (
     <>
-      <h3>{title}</h3>
+      <h3 className='list-title'>{title}</h3>
 
       <SortDropdown sortType={sortType} setSortType={setSortType} />
 
-      <Row className='componentRow'>
+      <Row className='componentRow g-4'>
         {visibleAnimals.map(animal => (
           <Col key={animal.id} md={4}>
             <AnimalCard

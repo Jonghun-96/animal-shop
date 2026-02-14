@@ -17,7 +17,7 @@ function SearchResultPage() {
 
   return (
     <Container className="search-container">
-      <h4 className="search-title">
+      <h4 className="search-title list-title">
         "{keyword}" 검색 결과 ({filteredAnimals.length}개)
       </h4>
 

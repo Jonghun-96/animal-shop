@@ -14,6 +14,7 @@ div{
   box-sizing: border-box;
 }
 
+
 .componentList{
   margin-top: 100px;
   align-items: center;
@@ -23,6 +24,7 @@ div{
 .componentList h3{
   display: inline-block;
   cursor: pointer;
+  font-size: 22px;
 }   /* 홈페이지 추천친구들,인기친구들... 소제목 */
 
 .animalCard img{

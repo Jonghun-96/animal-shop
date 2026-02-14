@@ -1,0 +1,13 @@
+
+.footer{
+  height: 400px;
+  background-color: rgb(241, 241, 241);
+}
+
+.footer h5{
+  font-size: 14px;
+}
+
+.footer p{
+  font-size: 11px;
+}

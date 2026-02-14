@@ -1,4 +1,4 @@
-import { animals } from '../data/data.js';
+import { animals } from '../data/data';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';

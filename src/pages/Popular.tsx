@@ -2,7 +2,7 @@
 
 import { useSelector } from 'react-redux';
 import { selectPopularAnimals } from '../store/animalsSlice';
-import AnimalListPage from './AnimalListPage.jsx';
+import AnimalListPage from './AnimalListPage';
 
 
 
@@ -16,6 +16,7 @@ function Popular() {
   return(
   <>
     <AnimalListPage 
+      className='list-title'
       animals={popular}
       title="인기 많은 친구들"
       likes={likes}

@@ -470,7 +470,7 @@ export const animals :Animal[] = [
     isSpecial: true,
     seedLikes: 121,
     img: '/images/animals/gumiho.png',
-    description: ''
+    description: '아홉 꼬리를 가진 요물'
   },  
   {
     id: 49,
@@ -480,7 +480,7 @@ export const animals :Animal[] = [
     isSpecial: true,
     seedLikes: 366,
     img: '/images/animals/haetae.png',
-    description: ''
+    description: '불을 뿜는 수호신'
   },  
   {
     id: 50,
@@ -490,7 +490,7 @@ export const animals :Animal[] = [
     isSpecial: true,
     seedLikes: 281,
     img: '/images/animals/haechi.png',
-    description: ''
+    description: '용맹함과 지혜의 상징'
   },  
   {
     id: 51,
@@ -500,7 +500,7 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 40,
     img: '/images/animals/shark.png',
-    description: ''
+    description: '바다의 포식자'
   }, 
   {
     id: 52,
@@ -510,7 +510,36 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 70,
     img: '/images/animals/skunk.png',
-    description: ''
-  },   
+    description: '향기(?)를 조심하세요'
+  },
+  {
+    id: 53,
+    name: '수달',
+    category: 'small',
+    price: 21500,
+    isSpecial: false,
+    seedLikes: 174,
+    img: '/images/animals/otter.png',
+    description: '물놀이 전문가'
+  },
+  {
+    id: 54,
+    name: '사슴',
+    category: 'medium',
+    price: 16000,
+    isSpecial: false,
+    seedLikes: 71,
+    img: '/images/animals/deer.png',
+    description: '숲 속의 평화로운 친구'
+  },
+  {
+    id: 55,
+    name: '봄꽃사슴',
+    category: 'medium',
+    price: 39000,
+    isSpecial: true,
+    seedLikes: 188,
+    img: '/images/animals/springflower_deer.png',
+    description: '봄의 향기를 품은 사슴'
+  },                 
 ]
-

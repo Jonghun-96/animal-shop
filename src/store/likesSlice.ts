@@ -24,7 +24,6 @@ const likesSlice = createSlice({
         state[id] = 1;
       }
     }
-
   }
 })
 

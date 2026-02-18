@@ -26,21 +26,34 @@ export function signup(inputId, inputPassword) {
 
 
 // 로그인-------------------------------------
-export function login(inputId, inputPassword) {
-  const users = getUsers();
-  const user = users.find(u => u.userId === inputId)
 
-  if(!user) {
-    return { success: false, message: '없는 아이디입니다'  };
+
+type LoginResult = {
+  success: boolean;
+  message?: string;
+};
+
+
+export function login(inputId: string, inputPassword: string): LoginResult {
+  
+  const users = getUsers();
+
+  const user = users.find((u) => u.userId === inputId);
+
+  if (!user) {
+    return { success: false, message: "없는 아이디입니다" };
   }
 
-  if(user.password !== inputPassword) {
-    return { success: false, message: '비밀번호가 틀렸습니다'  };
+  if (user.password !== inputPassword) {
+    return { success: false, message: "비밀번호가 틀렸습니다" };
   }
 
   setLoginUser(inputId);
-  return { success: true }
+  return { success: true };
 }
+
+
+
 
 
 

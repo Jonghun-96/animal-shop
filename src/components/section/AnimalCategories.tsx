@@ -8,7 +8,7 @@ function AnimalCategories() {
   const navigate = useNavigate();
 
   return(
-    <div className='categoryList componentList'>
+  <div className='categoryList componentList'>
     <h3>종류별로 보기</h3>
 
     <Row className='categoriesRow componentRow'>

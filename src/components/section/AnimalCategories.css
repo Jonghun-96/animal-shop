@@ -1,8 +1,11 @@
 
 
+
+.categoryList{
+  width: 100%;
+}
+
 .categoriesRow{
-  width: 80%;
-  margin: 0 auto;
 }
 
 .categoriesRow .col{
@@ -12,10 +15,11 @@
 }
 
 .categoriesRow .col img{
-  height: 150px;
+  height: 120px;
   border-radius: 2px;
 }
 
 .categoriesRow .col p{
   margin-top: 10px;
+  font-size: 14px;
 }

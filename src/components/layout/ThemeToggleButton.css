@@ -52,6 +52,11 @@ body.dark-mode .navbar.glass-navbar {
 }
 
 
+.dark-mode .animalCard{
+  background: #555;
+}
+
+
 .dark-mode .list-group-item{
   background-color: #333;
 }

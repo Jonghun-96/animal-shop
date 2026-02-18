@@ -2,8 +2,9 @@
 .mb-3.dropdown.btn-group{
   position: fixed;
   padding-left: 3%;
-  margin-top: -33px;
+  margin-top: -88px;
   width: 200px;
+  z-index: 10;
 }
 
 .mb-3.dropdown.btn-group .btn{

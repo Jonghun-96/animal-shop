@@ -7,8 +7,6 @@ import AnimalListPage from '../AnimalListPage';
 
 function All({ likes }) {
 
-  // const [visibleCount, setVisibleCount] = useState(12);
-  // const totalCount = animals.length;
   
 
   return(
@@ -19,7 +17,8 @@ function All({ likes }) {
       title="전체 동물 보기"
       likes={likes}
       showMore={true}
-      initialCount={8}
+      initialCount={12}
+      enableMore={true} 
     />
   </>
     

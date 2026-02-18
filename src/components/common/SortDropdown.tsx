@@ -20,6 +20,7 @@ function SortDropdown({ sortType, setSortType } :Props){
     return '정렬 선택';
   };
 
+
   return(
 
   <Dropdown as={ButtonGroup} className="mb-3">

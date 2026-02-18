@@ -43,75 +43,85 @@ function SignupPage(){
 
 
   return (
-  <>
+<>
+  <div className="d-flex justify-content-center align-items-center min-vh-100">
+    <Card style={{ width: "400px" }} className="p-4 shadow">
+      <h3 className="text-center mb-3">회원가입</h3>
 
-    <h3 className="text-center signup-text">회원 가입</h3>
-    <Container className="d-flex justify-content-center align-items-center vh-100">
-      <Card style={{ width: '400px' }}>
-        <Card.Body>
-          <p className="text-center mb-4">
-            가입할 아이디와 비밀번호를 입력하세요
-          </p>
+      <p className="text-center text-muted mb-4">
+        가입할 아이디와 비밀번호를 입력하세요
+      </p>
 
-          <Form>
-            {/* 아이디 */}
-            <Form.Group className="mb-2">
-              <Form.Control
-                placeholder="아이디"
-                proven
-                value={userId}
-                onChange={(e) => setUserId(e.target.value)}
-              />
-            </Form.Group>
+      <Form>
+        {/* 아이디 */}
+        <Form.Group className="mb-3">
+          <div className="d-flex justify-content-between align-items-center">
+            <Form.Label className="mb-1">아이디</Form.Label>
 
             {userId && !isIdRegexValid && (
-              <small className="text-danger d-block mb-1">
-                아이디는 영문과 숫자만 사용할 수 있습니다
+              <small className="text-danger">
+                영문/숫자만 가능
               </small>
             )}
 
             {userId && !isIdLengthValid && isIdRegexValid && (
-              <small className="text-danger d-block mb-1">
-                아이디는 {MIN_ID_LENGTH}자 이상이어야 합니다
+              <small className="text-danger">
+                {MIN_ID_LENGTH}자 이상
               </small>
             )}
+          </div>
 
-            {/* 비밀번호 */}
-            <Form.Group className="mb-2">
-              <Form.Control
-                type={showPw ? 'text' : 'password'}
-                placeholder="비밀번호"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
+          <Form.Control
+            type="text"
+            placeholder="아이디"
+            value={userId}
+            onChange={(e) => setUserId(e.target.value)}
+            isInvalid={userId !== "" && (!isIdRegexValid || !isIdLengthValid)}
+          />
+        </Form.Group>
+
+        {/* 비밀번호 */}
+        <Form.Group className="mb-3">
+          <div className="d-flex justify-content-between align-items-center">
+            <Form.Label className="mb-1">비밀번호</Form.Label>
 
             {password && !isPwValid && (
-              <small className="text-danger d-block mb-2">
-                비밀번호는 {MIN_PW_LENGTH}자 이상이어야 합니다
+              <small className="text-danger">
+                {MIN_PW_LENGTH}자 이상
               </small>
             )}
+          </div>
 
-            <Form.Check
-              type="checkbox"
-              label="비밀번호 보기"
-              className="mb-3"
-              checked={showPw}
-              onChange={() => setShowPw(!showPw)}
-            />
+          <Form.Control
+            type={showPw ? "text" : "password"}
+            placeholder="비밀번호"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            isInvalid={password !== "" && !isPwValid}
+          />
+        </Form.Group>
 
-            <Button
-              className="w-100"
-              disabled={!isFormValid}
-              onClick={handleSignUp}
-            >
-              회원 가입
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-    </Container>
-  </>
+        <Form.Check
+          type="checkbox"
+          id="showPwCheck"
+          label="비밀번호 보기"
+          className="mb-3"
+          checked={showPw}
+          onChange={(e) => setShowPw(e.target.checked)}
+        />
+
+        <Button
+          variant="dark"
+          className="w-100 mt-2"
+          disabled={!isFormValid}
+          onClick={handleSignUp}
+        >
+          회원 가입
+        </Button>
+      </Form>
+    </Card>
+  </div>
+</>
   )
 }
 

@@ -4,9 +4,10 @@
   border: none;
   background: none;
   position: absolute;
-  top: 170px;
-  left: 0%;
+  bottom: 110px;
+  left: 2%;
   font-size: 20px;
+  z-index: 10;
 }
 
 .likeBtn span{
@@ -38,4 +39,8 @@
 .likeBtn:hover .likeCount {
   opacity: 1;
   transform: translateY(0px);
+}
+
+.toast-container{
+  font-size: 8px;
 }

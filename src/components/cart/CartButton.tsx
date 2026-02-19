@@ -3,11 +3,14 @@ import './CartButton.css'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getLoginUser } from "../../utils/authStorage";
+import { useNavigate } from 'react-router-dom';
+import { FaCartShopping } from "react-icons/fa6";
 
 
 function CartButton({ onClick }) {
 
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const cart = useSelector(state => state.cart);
   const totalCount =  cart.reduce(
@@ -28,14 +31,16 @@ function CartButton({ onClick }) {
 
   return(
   <>
-    <Button className="cart-btn glass-button" onClick={handleCartClick}>
-      🛒
-      {totalCount > 0 && (
-        <Badge bg="danger" className="cart-badge">
-          {totalCount}
-        </Badge>
-      )}
-    </Button>
+    <div className="cart-btn">
+      <Button className="cart-icon glass-button" onClick={handleCartClick}>
+        <FaCartShopping />
+        {totalCount > 0 && (
+          <Badge bg="danger" className="cart-badge">
+            {totalCount}
+          </Badge>
+        )}
+      </Button>
+    </div>
 
     <Modal show={showModal} onHide={() => setShowModal(false)} centered>
       <Modal.Header closeButton>
@@ -48,11 +53,14 @@ function CartButton({ onClick }) {
 
       <Modal.Footer>
 
-        <Button variant="dark" onClick={() => window.location.href = "/login"}>
+        <Button variant="dark" onClick={() => {
+          setShowModal(false);
+          navigate('/login')}}>
           로그인 하러가기
         </Button>
       </Modal.Footer>
     </Modal>
+    
   </>
   )
 }

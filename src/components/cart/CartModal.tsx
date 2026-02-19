@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, increaseCount, decreaseCount, removeFromCart, clearCart } from '../../store/cartSlice';
 import './CartModal.css'
+import { animals } from '../../data/data'
 
 
 function CartModal({ show, onHide, clearCartStorage }) {
@@ -35,38 +36,43 @@ function CartModal({ show, onHide, clearCartStorage }) {
       </Modal.Header>
 
       <Modal.Body>
-        {
-          cart.length === 0 ? (
-            <div className='emptyCart'>아직 친구를 담지 않았어요</div>
-          ) : (
-          cart.map(item =>(
-            <div className='modalItem' key={item.id}>
-              <img className='itemImg' src={item.img} alt={item.name}/>
-              <div className='itemName'>{item.name}</div>
-              <div className='itemPrice'>{item.price.toLocaleString()}원</div>
-              <div className='itemCount'>
-                <Button className='btn btn-light btn-sm itemPlus'
-                onClick={()=>{
-                  dispatch(increaseCount(item.id))
-                }}>+</Button>
+        {cart.length === 0 ? (
+          <div className='emptyCart'>아직 친구를 담지 않았어요</div>
+        ) : (
+          cart.map(item => {
+            const animal = animals.find(a => a.id === item.id);
+            if (!animal) return null;
 
-                <span>{item.count}개</span>
+            return (
+              <div className='modalItem' key={item.id}>
+                <img className='itemImg' src={animal.img} alt={animal.name} />
+                <div className='itemName'>{animal.name}</div>
+                <div className='itemPrice'>{animal.price.toLocaleString()}원</div>
 
-                <Button className='btn btn-light btn-sm itemMinus' 
-                  disabled={item.count === 1}
-                  onClick={()=>{
-                    dispatch(decreaseCount(item.id))
-                  }}>-</Button>
-                
+                <div className='itemCount'>
+                  <Button
+                    className='btn btn-light btn-sm itemPlus'
+                    onClick={() => dispatch(increaseCount(item.id))}
+                  >
+                    +
+                  </Button>
+
+                  <span>{item.count}개</span>
+
+                  <Button
+                    className='btn btn-light btn-sm itemMinus'
+                    disabled={item.count === 1}
+                    onClick={() => dispatch(decreaseCount(item.id))}
+                  >
+                    -
+                  </Button>
                 </div>
-              <CloseButton onClick={()=>{
-                dispatch(removeFromCart(item.id))
-              }}/>
-            </div>
-          ))
-        )}
 
-        
+                <CloseButton onClick={() => dispatch(removeFromCart(item.id))} />
+              </div>
+            );
+          })
+        )}
       </Modal.Body>
 
       <Modal.Footer>
@@ -78,14 +84,11 @@ function CartModal({ show, onHide, clearCartStorage }) {
           clearCartStorage();
         }}>장바구니 비우기</Button>
         <Button variant="danger">구매하기</Button>
-        {/* <Button onClick={onHide}>닫기</Button> */}
         
       </Modal.Footer>
 
     </Modal>
     
-
-  
     
   </>
   )

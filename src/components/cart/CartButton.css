@@ -1,23 +1,33 @@
 
 
+
 .cart-btn{
   position: fixed;
-  bottom: 30px;
-  left: 30px;
-  width: 60px; 
-  height: 60px;
+  bottom: 8%;
+  left: 4%;
+  border-radius: 9999px;
+  border: none;
+  background-color: transparent;
+}
+
+.cart-icon{
+  position: relative;
+  top: 0%;
+  bottom: 0%;
+  width: 70px;
+  height: 70px;
+  padding: 10px;
 
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  border: 6px solid rgba(0, 0, 0, 0.08);
+  border: none;
   border-radius: 100px;
   box-sizing: border-box;
 
-  display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
 
-  background: transparent;
+  background: #828282cd;
   font-size: 2rem;
   cursor: pointer;
   z-index: 10;
@@ -25,10 +35,24 @@
 
 
 .cart-badge {
-  position: relative;
-  top: -10px;
-  right: -5px;
-  font-size: 1rem;
-  padding: 4px 6px;
-  border-radius: 50%;
+  position: absolute;
+
+  left: 0px;
+  top: 0px;
+
+  transform: translate(120%, -180%);
+
+  width: 30px;
+  height: 30px;
+
+  background: red;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 999px;
 }

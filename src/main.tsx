@@ -10,7 +10,7 @@ import store from './store/store'
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <StrictMode>
-      <BrowserRouter>
+      <BrowserRouter basename='/animal-shop/'>
         <App />
       </BrowserRouter>
     </StrictMode>

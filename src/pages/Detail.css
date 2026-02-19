@@ -8,6 +8,16 @@
   align-items: center;
 }
 
+.detailImg{
+  display: flex;        
+  justify-content: center; 
+  align-items: center;
+  height: 400px;
+  width: auto;
+  overflow: hidden;
+  margin-top: 60px;
+}
+
 .detail img{
   border-radius: 10px;
   width: 40%;

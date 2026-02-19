@@ -5,6 +5,7 @@
 .carousel-item {
   position: relative; 
   height: 80vh;
+  cursor: pointer;
 }
 
 /* 이미지 */
@@ -44,8 +45,8 @@
 }
 
 .carousel-indicators button {
-  width: 12px;
-  height: 12px;
+  width: 18px;
+  height: 18px;
   background-color: rgba(255, 255, 255, 0.5);
 }
 

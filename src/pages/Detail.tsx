@@ -17,7 +17,7 @@ function Detail() {
   <>
     <div className="detail">
       <div className="detailRow">
-        <div>
+        <div className='detailImg'>
           <img src={animal.img}/>
         </div>
         <div>

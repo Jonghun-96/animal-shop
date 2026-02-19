@@ -7,4 +7,7 @@
   background-color: #ffedcf; /* 필요하면 배경색도 */
 }
 
-
+.dark-mode .search-highlight{
+  color: #ffedcf;
+  background-color: orangered;
+} 

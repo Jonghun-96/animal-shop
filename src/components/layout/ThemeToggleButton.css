@@ -111,3 +111,14 @@ body.dark-mode .navbar.glass-navbar {
 .dark-mode .footer{
   background-color: #444;
 }
+
+
+
+.dark-mode .search-card{
+  background-color: #333;
+}
+
+.dark-mode .search-card span,
+.dark-mode .search-card p{
+  color:#eee
+}

@@ -50,6 +50,17 @@
 
 
 
+.specialList{
+  background-color: #f6f6f6;
+  padding: 50px 0;
+}
+
+.dark-mode .specialList{
+  background-color: #404040;
+}
+
+
+
 .special-header {
   position: relative;
   text-align: center;
@@ -61,13 +72,14 @@
   cursor: pointer;
 }
 
-.special-header .go-link {
+.special-header .special-link {
   position: absolute;
-  right: 36%;
-  top: 50%;
+  right: 28%;
+  top: 120%;
   transform: translateY(-50%);
 
   font-size: 0.9rem;
   color: gray;
   cursor: pointer;
 }
+

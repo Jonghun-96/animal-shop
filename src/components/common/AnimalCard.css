@@ -226,7 +226,6 @@
 .rank-1 {
   border: 5px solid rgba(255, 215, 0, 0.9);
   box-shadow: 0 0 18px rgba(255, 215, 0, 0.35);
-  transform: scale(1.03);
 }
 
 /* 2등 */

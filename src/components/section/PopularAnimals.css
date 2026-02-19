@@ -1,5 +1,13 @@
 
 
+.popularList{
+  background-color: #f6f6f6;
+  padding: 50px 0;
+}
+
+.dark-mode .popularList{
+  background-color: #404040;
+}
 
 .popular-header {
   position: relative;
@@ -14,8 +22,8 @@
 
 .popular-link {
   position: absolute;
-  right: 36%;
-  top: 50%;
+  right: 28%;
+  top: 120%;
   transform: translateY(-50%);
 
   font-size: 0.9rem;

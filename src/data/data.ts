@@ -403,7 +403,7 @@ export const animals :Animal[] = [
   isSpecial: true,
   seedLikes: 188,
   img: images[`springflower_deer.png`],
-  description: `봄의 향기를 품은 사슴`
+  description: `봄내음을 품은 사슴`
 },    
   {
     id: 40,

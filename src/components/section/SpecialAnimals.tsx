@@ -24,7 +24,7 @@ function SpecialAnimals() {
     <div className="special-header">
       <h3 onClick={() => navigate("/special")}>특별한 친구들</h3>
 
-      <span className="go-link" onClick={() => navigate("/special")}>
+      <span className="special-link" onClick={() => navigate("/special")}>
         보러가기 &gt;
       </span>
     </div>

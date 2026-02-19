@@ -76,7 +76,7 @@ function App() {
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/signup' element={<SignupPage/>}/>
 
-        <Route path='/*' element={<div>잘못된 페이지입니다</div>}/>
+        <Route path='/*' element={<div className='not-found'>잘못된 페이지 접근입니다</div>} />
       </Routes>
       <Footer/>
 

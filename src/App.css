@@ -1,8 +1,12 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Noto+Sans+KR:wght@100..900&display=swap');
+
+
 body{
   margin: 0; 
   padding: 0;
   padding-top: 56px;  /* navbar fixed때문에 사용 */
+  font-family: 'Noto Sans KR', 'Fira Code', sans-serif;  
 }
 
 html{
@@ -36,4 +40,9 @@ div{
 }
 
 
-
+.not-found{
+  width: 100%;
+  height: 30vh;
+  text-align: center;
+  margin-top: 18%;
+}

@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { Dropdown, ButtonGroup, Button } from 'react-bootstrap';
-import './SortDropDown.css';
+import './SortDropdown.css';
 
 
 type SortType = 'popular' | 'low' | 'high';

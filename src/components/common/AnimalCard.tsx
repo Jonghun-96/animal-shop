@@ -3,6 +3,7 @@ import LikeButton from './LikeButton';
 import './AnimalCard.css';
 import { Animal } from "../../types/animal";
 import { useRef } from "react";
+import  PopularAnimals from '../section/PopularAnimals';
 
 
 type Props = {
@@ -11,7 +12,7 @@ type Props = {
 }
 
 
-function AnimalCard({ animal, onClick }: Props) {
+function AnimalCard({ animal, onClick, rank }: Props) {
 
 
   const cardRef = useRef<HTMLDivElement>(null);
@@ -68,6 +69,19 @@ function AnimalCard({ animal, onClick }: Props) {
         </div>
       )}
       
+      {rank && rank <= 3 && (
+        <div
+          className={`animalCard 
+            ${animal.isSpecial ? "special-card" : ""} 
+            ${rank ? "rank-card" : ""} 
+            ${rank ? `rank-${rank}` : ""}
+          `}
+        >
+          {rank === 1 && "🥇 1위"}
+          {rank === 2 && "🥈 2위"}
+          {rank === 3 && "🥉 3위"}
+        </div>
+      )}
 
       <img src={animal.img} alt={animal.name}/>
       <h4>{animal.name}</h4>

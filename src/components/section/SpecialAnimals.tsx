@@ -20,7 +20,14 @@ function SpecialAnimals() {
 
   return(
   <div className='specialList componentList'>
-    <h3 onClick={()=>{navigate('/special')}}>특별한 친구들</h3>
+    
+    <div className="special-header">
+      <h3 onClick={() => navigate("/special")}>특별한 친구들</h3>
+
+      <span className="go-link" onClick={() => navigate("/special")}>
+        보러가기 &gt;
+      </span>
+    </div>
 
     <Row className='specialRow componentRow'>
       {

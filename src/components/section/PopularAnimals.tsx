@@ -17,15 +17,28 @@ function PopularAnimals() {
 
   return(
   <div className='popularList componentList'>
-    <h3 onClick={()=>{navigate('/popular')}}>인기 많은 친구들</h3>
+    
+    <div className="popular-header">
+      <h3 onClick={() => navigate("/popular")}>
+        인기 많은 친구들
+      </h3>
+
+      <span
+        className="popular-link"
+        onClick={() => navigate("/popular")}
+      >
+        보러가기 &gt;
+      </span>
+    </div>
     
     <Row className='popularRow componentRow'>
       {
-        popularPreview.map(animal => (
-          <Col key={animal.id} md={4}> 
-            <AnimalCard 
+        popularPreview.map((animal, index) => (
+          <Col key={animal.id} md={4}>
+            <AnimalCard
               animal={animal}
-              onClick={()=>{navigate(`/detail/${animal.id}`)}}
+              rank={index + 1}   // 1,2,3
+              onClick={() => navigate(`/detail/${animal.id}`)}
             />
           </Col>
         ))

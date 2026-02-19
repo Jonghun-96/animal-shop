@@ -48,3 +48,26 @@
   white-space: nowrap;
 }
 
+
+
+.special-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.special-header h3 {
+  margin: 0;
+  cursor: pointer;
+}
+
+.special-header .go-link {
+  position: absolute;
+  right: 36%;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 0.9rem;
+  color: gray;
+  cursor: pointer;
+}

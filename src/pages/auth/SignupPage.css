@@ -7,3 +7,37 @@
 .form-check-label{
   font-size: 10px;
 }
+
+.dark-mode .form-check-label{
+  color: #eee
+}
+
+div.p-4.shadow.card input::placeholder{
+  font-size: 11px;
+}
+
+
+.dark-mode div.p-4.shadow.card{
+  background-color: #505050;
+}
+
+.dark-mode div.p-4.shadow.card p,
+.dark-mode div.p-4.shadow.card h3{
+  color: rgb(200, 200, 200);
+}
+
+.dark-mode .form-label{
+  color: rgb(200, 200, 200);
+}
+
+.dark-mode div.p-4.shadow.card a{
+  color: rgb(155, 155, 255);
+}
+
+.dark-mode input::placeholder{
+  color: rgb(200, 200, 200);
+}
+
+.dark-mode .text-muted{
+  color: rgb(200, 200, 200) !important;
+}

@@ -28,7 +28,7 @@
   text-align: center;
   justify-content: center;
 
-  background: #828282bd;
+  background: rgba(120, 120, 120, 0.45);
   backdrop-filter: blur(1px);
   font-size: 2rem;
   cursor: pointer;

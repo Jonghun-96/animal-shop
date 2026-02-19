@@ -13,7 +13,6 @@
 .animalCard {
   width: 100%;
   height: 100%;
-  background: #fff;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -21,7 +20,8 @@
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(200deg, #f0e4d8 , #e6d7c9);
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(0,0,0,0.06);
 
   /* 회전 시 부드럽게 */
   transition: 0.3s;
@@ -68,7 +68,7 @@
   height: 100%;
   width: 100%;
   
-  background: linear-gradient(135deg, #d42bc3be, #684beb);
+  background: linear-gradient(135deg, #d42bc3, #684beb);
   transition: 0.3s ease;
 
   --mx: 50%;
@@ -96,6 +96,9 @@
   filter: blur(70px);
   opacity: 0.9;
 }
+
+
+
 
 
 
@@ -190,3 +193,50 @@
   transition: transform 0.08s ease;
 }
 
+
+
+
+
+
+
+
+/* 메달 */
+.rank-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.rank-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: bold;
+
+  background: rgba(0,0,0,0.7);
+  color: white;
+
+  z-index: 20;
+}
+
+/* 1등 */
+.rank-1 {
+  border: 5px solid rgba(255, 215, 0, 0.9);
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.35);
+  transform: scale(1.03);
+}
+
+/* 2등 */
+.rank-2 {
+  border: 5px solid rgba(192, 192, 192, 0.9);
+  box-shadow: 0 0 14px rgba(192, 192, 192, 0.35);
+}
+
+/* 3등 */
+.rank-3 {
+  border: 5px solid rgba(205, 127, 50, 0.9);
+  box-shadow: 0 0 14px rgba(205, 127, 50, 0.35);
+}

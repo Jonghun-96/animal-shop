@@ -31,7 +31,7 @@ function MallIntro() {
         </Carousel.Caption>
       </Carousel.Item>
 
-      <Carousel.Item onClick={() => navigate('/detail/55')}>
+      <Carousel.Item onClick={() => navigate('/detail/39')}>
         <img className="d-block w-100 mainImg" src={images[`banner_img2.jpg`]} alt="배너2" />
         <Carousel.Caption>
           <span>봄꽃사슴의 우아함을 화사한 봄과 함께 맞이하세요</span>

@@ -1,6 +1,6 @@
 import { Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import './NavBar.css'
 import SearchBar from './SearchBar';
@@ -10,38 +10,98 @@ import ThemeToggleButton from './ThemeToggleButton';
 import { getLoginUser, logout } from '../../utils/authStorage';
 import { useNavigate } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
-
+import { IoSearch } from "react-icons/io5";
 
 
 function NavBar() {
-
-  const darkMode = useSelector(state => state.theme.darkMode);
+  const darkMode = useSelector((state: any) => state.theme.darkMode);
   const navigate = useNavigate();
+  const collapseRef = useRef<HTMLDivElement>(null);
+  const searchContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+  const [isCollapseOpen, setIsCollapseOpen] = useState(false);
 
   const loginUser = getLoginUser();
+
 
   const handleLogout = () => {
     logout();
     navigate('/login');
-  }
+  };
 
   useEffect(() => {
-  if (darkMode) {
-    document.body.classList.add('dark-mode');
-  } else {
-    document.body.classList.remove('dark-mode');
-  }
-}, [darkMode]);
+    document.body.classList.toggle('dark-mode', darkMode);
+  }, [darkMode]);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(e.target as Node)
+      ) {
+        setIsSearchOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (collapseRef.current && !collapseRef.current.contains(e.target)) {
+        setIsCollapseOpen(false);
+      }
+    }
+    function handleEsc(e) {
+      if (e.key === 'Escape') setIsCollapseOpen(false);
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEsc);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
+
+
 
   return (
-  <>
-    <Navbar expand="md" className="glass-navbar" fixed="top">
+    <Navbar 
+      expand="md" className="glass-navbar" fixed="top" expanded={isCollapseOpen} 
+      onToggle={(nextExpanded) => setIsCollapseOpen(nextExpanded)}>
       <Container fluid>
 
-        <Navbar.Brand as={NavLink} to="/">포트폴리오제목</Navbar.Brand>
+        <Navbar.Brand as={NavLink} to="/">
+          포트폴리오제목
+        </Navbar.Brand>
 
-        {/* 오른쪽 고정 버튼 영역 */}
-        <div className="d-flex align-items-center gap-2 ms-auto order-md-3">
+        {/*  PC용 검색창 */}
+        <div className="d-none d-md-block mx-3">
+          <SearchBar animals={animals} isSearchOpen={true} />
+        </div>
+
+        {/*  오른쪽 버튼 영역 */}
+        <div className="d-flex align-items-center gap-2 ms-auto">
+
+          {/*  모바일 검색 아이콘 */}
+          <div ref={searchContainerRef} className="d-md-none">
+            <button
+              className="search-icon"
+              onClick={() => setIsSearchOpen(prev => !prev)}
+            >
+              <IoSearch className={isSearchOpen ? "active" : ""} />
+            </button>
+
+            {isSearchOpen && (
+              <SearchBar animals={animals} isSearchOpen={isSearchOpen} />
+            )}
+          </div>
+
           <ThemeToggleButton />
 
           <NavDropdown
@@ -54,11 +114,9 @@ function NavBar() {
                 <NavDropdown.Header>
                   {loginUser}님
                 </NavDropdown.Header>
-
                 <NavDropdown.Item as={NavLink} to="/mypage">
                   마이페이지
                 </NavDropdown.Item>
-
                 <NavDropdown.Item onClick={handleLogout}>
                   로그아웃
                 </NavDropdown.Item>
@@ -68,7 +126,6 @@ function NavBar() {
                 <NavDropdown.Item as={NavLink} to="/login">
                   로그인
                 </NavDropdown.Item>
-
                 <NavDropdown.Item as={NavLink} to="/signup">
                   회원가입
                 </NavDropdown.Item>
@@ -80,8 +137,8 @@ function NavBar() {
         </div>
 
         {/* 메뉴 영역 */}
-        <Navbar.Collapse id="navbarScroll" className="order-md-2">
-          <Nav className="me-auto nav-text">
+        <Navbar.Collapse ref={collapseRef} in={isCollapseOpen} id="navbarScroll">
+          <Nav className="ms-auto nav-text"> 
             <Nav.Link as={NavLink} to="/special">특별한 친구들</Nav.Link>
             <Nav.Link as={NavLink} to="/popular">인기 많은 친구들</Nav.Link>
 
@@ -93,13 +150,10 @@ function NavBar() {
               <NavDropdown.Item as={NavLink} to="/category/bird">새</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-
-          <SearchBar animals={animals} />
         </Navbar.Collapse>
 
       </Container>
     </Navbar>
-  </>
   );
 }
 

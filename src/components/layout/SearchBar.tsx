@@ -11,7 +11,7 @@ type Props = {
 };
 
 
-function SearchBar({ animals } :Props){
+function SearchBar({ animals, isSearchOpen } :Props){
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -90,7 +90,7 @@ function SearchBar({ animals } :Props){
 
   return(
   <>
-    <div ref={wrapperRef} className="search-wrapper">
+    <div ref={wrapperRef} className={`search-wrapper ${isSearchOpen ? "mobile-state" : ""}`}>
 
       <Form className="d-flex search-input"
         onSubmit={(e) => {
@@ -117,7 +117,6 @@ function SearchBar({ animals } :Props){
         highlightIndex={highlightIndex}
         onSelect={()=>{setKeyword('')}}
       />
-
     </div>
   </>
   )

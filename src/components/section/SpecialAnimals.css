@@ -25,28 +25,8 @@
 }
 
 
-.animalCard{
-  border-radius: 10px;
-  box-sizing: border-box;
-  padding: 6px;
-  cursor: pointer;
-  background-color: rgb(240, 240, 240, 0.5);
-  width: 100%;
-  height: 100%;
-  max-width: 240px;
-  min-width: 180px;
-  margin: 0 auto;
-  justify-content: center;
-}
 
-.animalCard h4{
-  margin: 20px auto;
-}
 
-.animalCard p{
-  margin-bottom: 6px;
-  white-space: nowrap;
-}
 
 
 

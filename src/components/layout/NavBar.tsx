@@ -105,7 +105,7 @@ function NavBar() {
       <Container fluid>
 
         <Navbar.Brand as={NavLink} to="/">
-          포트폴리오제목
+          <span className='pet-bit'>pet-bit</span>
         </Navbar.Brand>
 
         {/*  PC용 검색창 */}

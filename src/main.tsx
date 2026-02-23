@@ -11,7 +11,7 @@ import { store } from './store/store'
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <StrictMode>
-      <BrowserRouter basename='/animal-shop/'>
+      <BrowserRouter basename='/pet-bit/'>
         <App />
       </BrowserRouter>
     </StrictMode>

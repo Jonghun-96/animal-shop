@@ -8,7 +8,7 @@ function Footer() {
         <Row className="text-center text-md-start">
           
           <Col md={4} className="mb-3">
-            <h5 className="fw-bold">Animal Shop</h5>
+            <h5 className="fw-bold">pet-bit</h5>
             <p className="mb-0">
               귀여운 동물 피규어를 모아놓은 쇼핑몰 프로젝트입니다.
             </p>
@@ -34,7 +34,7 @@ function Footer() {
 
           <Col md={4} className="mb-3 text-md-end">
             <h5 className="fw-bold">Copyright</h5>
-            <p className="mb-0">© 2026 Animal Shop. All rights reserved.</p>
+            <p className="mb-0">© 2026 pet-bit. All rights reserved.</p>
             <p className="mb-0">Made with ❤️ by JH</p>
           </Col>
 

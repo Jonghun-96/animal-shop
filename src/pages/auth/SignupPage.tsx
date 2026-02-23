@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { signup } from '../../utils/authService';
 import { Button, Container, Card, Form } from 'react-bootstrap';
 import './SignupPage.css';
+import { toast } from 'react-hot-toast';
+
 
 
 const MIN_ID_LENGTH = 4;
@@ -33,12 +35,15 @@ function SignupPage(){
     const result = signup(userId, password);
 
     if (!result || !result.success) {
-      alert(result?.message || '회원가입에 실패했습니다');
+      toast.error(result?.message || '회원가입에 실패했습니다 😢');
       return;
     }
+    
+    toast.success('회원가입 완료! 🎉');
 
-    alert('회원가입 완료! 로그인 페이지로 이동합니다.');
-    navigate('/login');
+    setTimeout(() => {
+      navigate('/login');
+    }, 1500);
   };
 
 

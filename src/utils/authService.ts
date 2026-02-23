@@ -58,7 +58,7 @@ export function login(inputId: string, inputPassword: string): LoginResult {
 
 
 // 로그인 사용자 저장
-export function setLoginUser(userId) {
+export function setLoginUser(userId: string) {
   localStorage.setItem('loginUser', userId);
 }
 

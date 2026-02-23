@@ -23,6 +23,38 @@
 
 
 
+
+
+.nav-link.active{
+  color: #6868ff !important;
+}
+
+.dropdown-toggle.show.nav-link{
+  color: #6868ff;
+}
+
+
+
+
+
+
+
+.dark-mode a.nav-link.active{
+  color: #9B9BFF;
+}
+
+.dark-mode .dropdown-toggle.show.nav-link{
+  color: #9B9BFF;
+}
+
+.dark-mode .dropdown-item.active{
+  background-color: #6868ff;
+}
+
+
+
+
+
 @media (max-width: 767.2px) {
 
   #navbarScroll {
@@ -46,15 +78,5 @@
     width: 200px;
   }
 
-  .dark-mode a.nav-link.active{
-    color: #9B9BFF;
-  }
 
-  .dark-mode .dropdown-toggle.show.nav-link{
-    color: #9B9BFF;
-  }
-
-  .dark-mode .dropdown-item.active{
-    background-color: #6868ff;
-  }
 }

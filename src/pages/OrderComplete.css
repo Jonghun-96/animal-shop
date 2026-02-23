@@ -1,0 +1,25 @@
+
+
+.dark-mode .ordercomplete-box,
+.dark-mode .ordercomplete-textbox{
+  background-color: #444;
+}
+
+.dark-mode .ordertext{
+  color: #EEEEEE
+}
+
+
+.order-price{
+  font-size: 20px;
+}
+
+.checkout-box {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.fw-bold {
+  letter-spacing: -0.5px;
+}
+

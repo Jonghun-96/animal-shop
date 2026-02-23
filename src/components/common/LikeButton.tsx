@@ -5,6 +5,7 @@ import { Animal } from "../../types/animal";
 import { getLoginUser } from '../../utils/authStorage';
 import { Toast, ToastContainer } from 'react-bootstrap';
 import { useState } from 'react';
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 
 type Props = {
@@ -35,7 +36,7 @@ function LikeButton({ animal } :Props) {
         dispatch(toggleLike(animal.id))
       }}
       aria-label="like button">
-      {isLiked ? '❤️' : '🤍'} 
+      {isLiked ? <FaHeart className="text-danger fs-4"/> : <FaRegHeart className="text-secondary fs-4"/>} 
       <span className='likeCount'>Like {displayCount}</span>
     </button>
     <ToastContainer position="top-center" className="p-3">

@@ -1,0 +1,28 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  /* 부트스트랩이 사용하는 폰트 변수들을 직접 가로챕니다 */
+  --bs-body-font-family: "Pretendard", -apple-system, sans-serif !important;
+  --main-font: "Pretendard", -apple-system, sans-serif;
+}
+
+/* 부트스트랩의 강력한 설정을 이기기 위해 html과 body에 직접 박습니다 */
+html, body {
+  font-family: var(--main-font) !important;
+}
+
+/* 버튼, 입력창 등 부트스트랩 컴포넌트들까지 싹 다 강제 적용 */
+button, input, select, textarea, .btn, .form-control {
+  font-family: var(--main-font) !important;
+}
+
+
+
+body{margin: 0; padding: 0;}
+
+div{box-sizing: border-box;}
+
+
+
+
+

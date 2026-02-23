@@ -1,5 +1,6 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Noto+Sans+KR:wght@100..900&display=swap');
+
+
 
 
 body{
@@ -45,4 +46,9 @@ div{
   height: 30vh;
   text-align: center;
   margin-top: 18%;
+}
+
+
+.center{
+  text-align: center;
 }

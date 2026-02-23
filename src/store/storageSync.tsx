@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { saveCart } from '../utils/cartStorage';
 import { saveLikes } from '../utils/likesStorage';
+import { getLoginUser } from '../utils/authStorage';
 
 
 function StorageSync() {
@@ -9,13 +10,10 @@ function StorageSync() {
   const likes = useSelector(state => state.likes);
 
   useEffect(()=>{
-    saveCart(cart);
-  },[cart]);
-
-  useEffect(()=>{
-    saveLikes(likes);
-  },[likes]);
-
+    const userId = getLoginUser();
+    saveCart(cart, userId);
+    saveLikes(likes, userId);
+  },[cart, likes]);
 
   return null;
 

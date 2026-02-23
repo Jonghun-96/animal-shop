@@ -11,9 +11,19 @@ import { getLoginUser, logout } from '../../utils/authStorage';
 import { useNavigate } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
+import { useDispatch } from 'react-redux';
+import { setCart } from "../../store/cartSlice";
+import { getCart } from "../../utils/cartStorage"; 
+import { clearUser } from '@/store/authSlice';
+import { RootState } from '@/store/store';
+import { toast } from 'react-hot-toast';
+import { clearLike } from '@/store/likesSlice';
+
 
 
 function NavBar() {
+
+  const dispatch = useDispatch();
   const darkMode = useSelector((state: any) => state.theme.darkMode);
   const navigate = useNavigate();
   const collapseRef = useRef<HTMLDivElement>(null);
@@ -21,14 +31,32 @@ function NavBar() {
 
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isCollapseOpen, setIsCollapseOpen] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMsg, setToastMsg] = useState("");
 
-  const loginUser = getLoginUser();
+  const loginUser = useSelector(
+    (state: RootState) => state.auth.loginUser
+  );
 
 
   const handleLogout = () => {
-    logout();
-    navigate('/login');
+
+    dispatch(clearUser());
+    dispatch(clearLike());
+    localStorage.removeItem("loginUser");
+
+    toast.success("로그아웃 되었습니다. 또 만나요! 👋", {
+      icon: '🏃', // 아이콘도 바꿀 수 있어요 (선택사항)
+      duration: 2000,
+    });
+
+    navigate('/');
   };
+
+  useEffect(() => {
+    const userId = getLoginUser();
+    dispatch(setCart(getCart(userId)));
+  }, []);
 
   useEffect(() => {
     document.body.classList.toggle('dark-mode', darkMode);
@@ -123,6 +151,9 @@ function NavBar() {
               </>
             ) : (
               <>
+                <NavDropdown.Item as={NavLink} to="/mypage">
+                  마이페이지
+                </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to="/login">
                   로그인
                 </NavDropdown.Item>
@@ -153,6 +184,10 @@ function NavBar() {
         </Navbar.Collapse>
 
       </Container>
+
+
+
+
     </Navbar>
   );
 }

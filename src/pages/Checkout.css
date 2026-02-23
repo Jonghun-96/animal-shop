@@ -1,0 +1,41 @@
+
+
+
+
+.dark-mode .checkoutBox-left,
+.dark-mode .checkoutBox-right{
+  background-color: #333;
+}
+
+
+.checkoutBox-left h5{
+  margin-bottom: 30px;
+}
+
+
+
+.dark-mode .checkout-info{
+  max-width: 600px;
+}
+
+.dark-mode h5,.dark-mode span{
+  color: #EEEEEE;
+}
+
+
+
+.checkout-info input::placeholder{
+  font-size: 11px;
+}
+
+.checkout-total-price div{
+  width: 100%;
+}
+
+.list-group-flush>.list-group-item{
+  max-width: 100%;
+} 
+
+.checkout-rightbox .text-danger{
+  font-size: 20px;
+}

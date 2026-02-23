@@ -1,0 +1,18 @@
+
+
+.toast-login,
+.toast-logout{
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  font-size: 18px;
+  text-align: center;
+}
+
+.dark-mode .toast-login,
+.dark-mode .toast-logout{
+  color: #333
+}
+

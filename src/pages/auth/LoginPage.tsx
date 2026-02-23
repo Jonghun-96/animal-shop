@@ -4,30 +4,72 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login, setLoginUser, logout } from '../../utils/authService';
 import { getLoginUser } from '../../utils/authStorage';
-
-
-
-
-
+import { useDispatch } from "react-redux";
+import { getCart, saveCart } from "../../utils/cartStorage";
+import { setCart } from "../../store/cartSlice";
+import { setUser } from '../../store/authSlice';
+import { useLocation } from "react-router-dom";
+import Toast from 'react-bootstrap/Toast';
+import './LoginPage.css';
+import { toast } from 'react-hot-toast';
 
 
 
 
 function LoginPage(){
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();  
   const [inputId, setInputId] = useState('');
   const [inputPassword, setInputPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const [showToast, setShowToast] = useState(false);
+  const [toastMsg, setToastMsg] = useState("");
 
-  const handleLogin = () => {
-    const result = login(inputId, inputPassword)
-    if(result.success) {
-      navigate('/')
-    } else {
-      setErrorMsg(result.message);
-    }
-  }
+
+
+  const handleLogin = (e) => {
+    if (e) e.preventDefault(); 
+
+    const result = login(inputId, inputPassword);
+
+    // ❌ 에러 발생 시
+    if (!result.success) {
+      toast.error(result.message); //  빨간색 에러 토스트
+      return;
+    } 
+
+    // ... (장바구니 병합 로직 동일)
+    const userId = inputId;
+    const guestCart = getCart();
+    const userCart = getCart(userId) || [];
+    const mergedCart = [...userCart]; 
+
+    guestCart.forEach(guestItem => {
+      const found = mergedCart.find(item => item.id === guestItem.id);
+      if (found) { found.count += guestItem.count; } 
+      else { mergedCart.push(guestItem); }
+    });
+
+    saveCart(mergedCart, userId);
+    localStorage.removeItem("cart_guest");
+
+    // 로그인 성공 시 토스트 호출
+    toast.success(`${inputId}님, 환영합니다! 🎉`);
+
+    dispatch(setCart(mergedCart));
+    dispatch(setUser(inputId));
+
+    setTimeout(() => {
+      navigate('/');
+    }, 1500); // 토스트를 읽을 시간을 조금 더 줌
+  };
+
+
+
+
 
   const isDisabled = inputId.trim() === "" || inputPassword.trim() === "";
 
@@ -40,6 +82,8 @@ function LoginPage(){
 
   return (
   <div className="d-flex justify-content-center align-items-center min-vh-100">
+
+
     <Card style={{ width: "400px" }} className="p-4 shadow">
       <h3 className="text-center mb-4">로그인</h3>
 
@@ -71,7 +115,7 @@ function LoginPage(){
         )}
 
         <Button
-          type="button"
+          type="submit"
           variant="dark"
           className="w-100 mt-3"
           onClick={handleLogin}
@@ -88,7 +132,20 @@ function LoginPage(){
         </Link>
       </p>
     </Card>
+
+
+    <Toast
+      className='toast-login'
+      show={showToast}
+      onClose={() => setShowToast(false)}
+      delay={3000}
+      autohide
+    >
+      <Toast.Body>{toastMsg}</Toast.Body>
+    </Toast>
+
   </div>
+  
   )
 }
 

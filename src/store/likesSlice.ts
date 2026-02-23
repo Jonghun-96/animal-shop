@@ -23,10 +23,15 @@ const likesSlice = createSlice({
       }else{
         state[id] = 1;
       }
+    },
+
+    clearLike(state){
+
+      return {};
     }
   }
 })
 
 
-export const { toggleLike } = likesSlice.actions;
+export const { toggleLike, clearLike } = likesSlice.actions;
 export default likesSlice.reducer;

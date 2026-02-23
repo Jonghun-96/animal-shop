@@ -23,3 +23,18 @@
   width: 40%;
   min-width: 160px;
 }
+
+.detail .btn{
+  margin: 0 10px;
+}
+
+
+
+
+
+.wishBtn.btn-danger{
+  color: #fff;
+  border: 1px solid rgb(255, 82, 168);
+  background-color: rgb(255, 82, 168);
+}
+

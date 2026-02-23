@@ -1,0 +1,41 @@
+
+
+.mypage-user,
+.mypage-receipt{
+  border-radius: 5px;
+}
+
+.dark-mode .mypage-user,
+.dark-mode .mypage-cart,
+.dark-mode .mypage-wish,
+.dark-mode .mypage-receipt{
+  background-color: #444;
+}
+
+
+.dark-mode .mypage-wishhead,
+.dark-mode .mypage-userhead{
+  background-color: #2a2a2a !important;
+}
+
+.dark-mode .mypage-receiptbox{
+  background-color: #555 !important;
+}
+
+.btn-dark{
+  background-color: #007fff;
+  border: none;
+}
+
+.btn-dark:hover{
+  background-color: #005cb9;
+}
+
+.dark-mode .mypage-card{
+  color: #EEEEEE
+}
+
+.dark-mode .darkmode-white{
+  color: #EEEEEE !important;
+}
+

@@ -6,6 +6,7 @@ import { useRef } from "react";
 import  PopularAnimals from '../section/PopularAnimals';
 
 
+
 type Props = {
   animal :Animal;
   onClick :React.MouseEventHandler<HTMLDivElement>;

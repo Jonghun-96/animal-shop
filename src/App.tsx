@@ -32,6 +32,11 @@ import { getCart, saveCart, clearCartStorage } from './utils/cartStorage';
 import { useSelector } from 'react-redux';
 import SearchResultList from './components/layout/SearchResultList';
 import SearchResultPage from './pages/search/SearchResultPage';
+import MyPage from './pages/MyPage';
+import Checkout from './pages/Checkout'
+import { Toaster } from 'react-hot-toast';
+import OrderComplete from './pages/OrderComplete';
+
 
 
 function App() {
@@ -44,11 +49,12 @@ function App() {
 
   return (
     <>
+      <Toaster />
       <StorageSync />
       <ScrollToTop/>
       <NavBar/>
       <CartButton onClick={()=>{setIsCartOpen(prev => !prev)}}/>
-      <CartModal show={isCartOpen} onHide={()=>{setIsCartOpen(false)}} clearCart={clearCartStorage}/>
+      <CartModal show={isCartOpen} onHide={()=>{setIsCartOpen(false)}} clearCartStorage={clearCartStorage}/>
 
       <Routes>
         <Route path='/' element={
@@ -59,6 +65,9 @@ function App() {
             <AnimalCategories/>
           </>
         }/>
+        <Route path='/mypage' element={<MyPage/>}/>
+        <Route path='/checkout' element={<Checkout/>}/>
+        <Route path='/orderComplete' element={<OrderComplete/>}/>
         <Route path='/special' element={<Special/>}/>
         <Route path='/popular' element={<Popular/>}/>
         <Route path='/detail/:id' element={<Detail/>}/>

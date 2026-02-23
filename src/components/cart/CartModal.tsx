@@ -1,6 +1,6 @@
 import { Navbar, Nav, Container, Row, Col, Form, Button, Modal, CloseButton } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, increaseCount, decreaseCount, removeFromCart, clearCart } from '../../store/cartSlice';
 import './CartModal.css'
@@ -79,11 +79,24 @@ function CartModal({ show, onHide, clearCartStorage }) {
         <div className='totalPrice'>
           총 금액 : <strong>{totalPrice.toLocaleString()}</strong>원
         </div>
-        <Button variant="danger" onClick={()=>{
+
+        <Button 
+        variant="danger" 
+        onClick={() => {
           dispatch(clearCart())
           clearCartStorage();
-        }}>장바구니 비우기</Button>
-        <Button variant="danger">구매하기</Button>
+        }}>
+          장바구니 비우기
+        </Button>
+
+        <Button 
+        variant="danger"
+        onClick={() => {
+          onHide();
+          navigate('/mypage');
+        }}>
+          구매하기
+        </Button>
         
       </Modal.Footer>
 

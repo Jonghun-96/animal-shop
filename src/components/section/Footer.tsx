@@ -20,7 +20,16 @@ function Footer() {
           <Col md={4} className="mb-3">
             <h5 className="fw-bold">Contact</h5>
             <p className="mb-0">Email : xcyui@naver.com</p>
-            <p className="mb-0">GitHub : github.com/Jonghun-96</p>
+            <p className="mb-0">GitHub : 
+              <a 
+                href="https://github.com/Jonghun-96" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-decoration-none text-reset ms-1"
+              >
+                github.com/Jonghun-96
+              </a>
+            </p>
           </Col>
 
           <Col md={4} className="mb-3 text-md-end">

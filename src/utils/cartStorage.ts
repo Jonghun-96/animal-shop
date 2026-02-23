@@ -1,12 +1,17 @@
 
 
 
-const CART_KEY = 'cart';
+
+const getCartKey = (userId?: string) => {
+  return userId ? `cart_${userId}` : "cart_guest";
+};
 
 
-export function getCart() {
+
+export function getCart(userId?: string) {
   try {
-    const data = localStorage.getItem(CART_KEY);
+    const key = getCartKey(userId);
+    const data = localStorage.getItem(key);
     return data ? JSON.parse(data) : [];
   } catch (err) {
     console.log('장바구니 불러오기 실패', err);
@@ -16,16 +21,18 @@ export function getCart() {
 
 
 
-export function saveCart(cart) {
+export function saveCart(cart, userId?: string) {
   try {
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    const key = getCartKey(userId);
+    localStorage.setItem(key, JSON.stringify(cart));
   } catch (err) {
     console.log('장바구니 저장 실패', err);
   }
 }
 
 
-export function clearCartStorage(){
-  localStorage.removeItem(CART_KEY);
+export function clearCartStorage(userId?: string){
+  const key = getCartKey(userId);
+  localStorage.removeItem(key);
 }
 

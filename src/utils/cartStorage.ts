@@ -2,8 +2,9 @@
 
 
 
-const getCartKey = (userId?: string) => {
-  return userId ? `cart_${userId}` : "cart_guest";
+const getCartKey = (userId?: string | number | { id: string | number }) => {
+  const finalId = typeof userId === 'object' ? userId?.id : userId;
+  return finalId ? `cart_${finalId}` : "cart_guest";
 };
 
 

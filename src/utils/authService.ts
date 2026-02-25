@@ -5,6 +5,7 @@ import { getUsers, saveUsers } from './authStorage';
 
 // 가입-------------------------
 export function signup(inputId, inputPassword) {
+  
 
   const users = getUsers();
   const exists = users.find(user => user.userId === inputId);
@@ -30,14 +31,20 @@ export function signup(inputId, inputPassword) {
 
 type LoginResult = {
   success: boolean;
+  role: string;
   message?: string;
 };
 
 
 export function login(inputId: string, inputPassword: string): LoginResult {
+
+
+  if (inputId === 'admin' && inputPassword === 'admin1234!') {
+    setLoginUser('admin');
+    return { success: true, role: 'ADMIN', message: "관리자님 환영합니다." };
+  }
   
   const users = getUsers();
-
   const user = users.find((u) => u.userId === inputId);
 
   if (!user) {
@@ -49,8 +56,14 @@ export function login(inputId: string, inputPassword: string): LoginResult {
   }
 
   setLoginUser(inputId);
-  return { success: true };
+
+  return { 
+    success: true, 
+    role: 'USER' 
+  };
 }
+
+
 
 
 

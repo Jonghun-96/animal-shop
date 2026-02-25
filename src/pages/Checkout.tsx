@@ -11,9 +11,21 @@ function Checkout() {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
 
-  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.count, 0);
+  const allOrders = JSON.parse(localStorage.getItem('petbit_orders') || '[]');
+  const currentOrder = allOrders[allOrders.length - 1] || {};
+  const checkoutItems = currentOrder.items || [];
+  const totalPrice = currentOrder.amount || 0;
+
+  
   const shippingFee = totalPrice >= 30000 || totalPrice === 0 ? 0 : 3000;
   const finalPrice = totalPrice + shippingFee;
+
+
+
+
+
+
+
 
   const [buyerInfo, setBuyerInfo] = useState({
     name: '',
@@ -37,29 +49,48 @@ function Checkout() {
   };
 
   const handlePayment = () => {
-    if (window.confirm(`${finalPrice.toLocaleString()}원을 결제하시겠습니까?`)) {
-      const orderedItems = [...cart];
+    console.log("1. 결제 버튼 클릭됨"); // 로그 찍히는지 확인
+    console.log("현재 정보:", { finalPrice, buyerInfo, checkoutItems });
 
-      dispatch(clearCart());
-      
-      toast.success('주문이 완료되었습니다! 🎉', {
-        duration: 2000,
-        position: 'top-center',
-      });
-      
-      setTimeout(() => {
-        toast.dismiss();
-        navigate('/orderComplete', { 
-          state: { 
-            orderId: Date.now(),
+    if (window.confirm(`${finalPrice.toLocaleString()}원을 결제하시겠습니까?`)) {
+      console.log("2. 확인창 승인됨");
+
+      try {
+        // 혹시 여기서 cart가 정의 안 되어 있을 수 있으니 checkoutItems를 활용하세요!
+        const orderedItems = [...checkoutItems]; 
+
+        const allOrders = JSON.parse(localStorage.getItem('petbit_orders') || '[]');
+        
+        if (allOrders.length > 0) {
+          const lastIndex = allOrders.length - 1;
+          allOrders[lastIndex] = {
+            ...allOrders[lastIndex],
             buyerName: buyerInfo.name,
-            amount: finalPrice,
             address: `${buyerInfo.address} ${buyerInfo.detailAddress}`,
-            items: orderedItems
-          } 
-        });
-      }, 1500);
-      
+            amount: finalPrice,
+            status: 'completed',
+            date: new Date().toLocaleString()
+          };
+          
+          localStorage.setItem('petbit_orders', JSON.stringify(allOrders));
+          console.log("3. 스토리지 저장 성공");
+        }
+
+        dispatch(clearCart());
+        console.log("4. 장바구니 비우기 성공");
+        
+        toast.success('주문이 완료되었습니다! 🎉');
+        
+        setTimeout(() => {
+          console.log("5. 페이지 이동 시도");
+          navigate('/orderComplete', { state: allOrders[allOrders.length - 1] });
+        }, 1500);
+
+      } catch (error) {
+        console.error("결제 처리 중 에러 발생:", error);
+      }
+    } else {
+      console.log("결제 취소됨");
     }
   };
 
@@ -95,39 +126,79 @@ function Checkout() {
         </Col>
 
 
+
+
         <Col md={5}>
           <Card className="p-3 shadow-sm checkout-rightbox">
-            <h5>결제 금액</h5>
-            <ListGroup variant="flush" className="my-3">
+            <h5>결제 정보</h5>
+            
 
-              <ListGroup.Item className="d-flex justify-content-between">
-                <span>총 상품 금액</span>
-                <span>{totalPrice.toLocaleString()}원</span>
-              </ListGroup.Item>
+            <div className="order-summary-container">
+              {checkoutItems.map((item: any) => (
+                <div key={item.id} className="checkout-item-row">
+                  {/* 1. 이미지 */}
+                  <img 
+                    src={item.image || item.img} 
+                    alt={item.name} 
+                    className="checkout-item-img" 
+                  />
+                  
+                  {/* 2. 상품명 (중앙 정렬 효과) */}
+                  <div className="checkout-item-name">
+                    {item.name}
+                  </div>
 
-              <ListGroup.Item className="d-flex justify-content-between">
-                <span>배송비</span>
-                <span>{shippingFee.toLocaleString()}원</span>
-              </ListGroup.Item>
+                  {/* 3. 수량 */}
+                  <div className="checkout-item-count">
+                    {item.count || 1}개
+                  </div>
 
-              <ListGroup.Item className="d-flex justify-content-between fw-bold">
-                <span>최종 결제 금액</span>
-                <span className="text-danger .final-price-amount">{(totalPrice + shippingFee).toLocaleString()}원</span>
-              </ListGroup.Item>
+                  {/* 4. 가격 (오른쪽 정렬) */}
+                  <div className="checkout-item-price">
+                    {(item.price * (item.count || 1)).toLocaleString()}원
+                  </div>
+                </div>
+              ))}
+            </div>
 
-            </ListGroup>
+            <div className="py-3 bg-white">
+              {/* 총 상품 금액 */}
+              <div className="d-flex justify-content-between px-4 py-2">
+                <span className="text-muted">총 상품 금액</span>
+                <span className="fw-medium text-dark">{totalPrice.toLocaleString()}원</span>
+              </div>
+
+              {/* 배송비 */}
+              <div className="d-flex justify-content-between px-4 py-2">
+                <span className="text-muted">배송비</span>
+                <span className="fw-medium text-dark">{shippingFee.toLocaleString()}원</span>
+              </div>
+
+              {/* 구분선 (필요하면 넣으세요) */}
+              <div className="mx-4 my-2 border-top" style={{ opacity: 0.1 }}></div>
+
+              {/* 최종 결제 금액 */}
+              <div className="d-flex justify-content-between px-4 py-3 align-items-center">
+                <span className="fw-bold fs-5">최종 결제 금액</span>
+                <span className="fw-bold text-danger fs-4">
+                  {(totalPrice + shippingFee).toLocaleString()}원
+                </span>
+              </div>
+            </div>
             
             <Button 
-              variant={isFormValid ? "dark" : "secondary"} 
-              size="lg" 
-              className="w-100"
-              onClick={handlePayment}
-              disabled={!isFormValid}
+            variant={isFormValid ? "dark" : "secondary"} 
+            onClick={handlePayment}
+            disabled={!isFormValid}
             >
               {isFormValid ? "결제하기" : "배송 정보를 입력해주세요"}
             </Button>
           </Card>
         </Col>
+
+
+
+
       </Row>
     </Container>
   );

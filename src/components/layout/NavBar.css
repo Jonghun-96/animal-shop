@@ -39,3 +39,23 @@
   z-index: 1050;
 }
 
+@media (max-width: 991px) {
+  /* 드롭다운 메뉴가 화면 밖으로 나가지 않게 */
+  .navbar-collapse .dropdown-menu {
+    position: static !important; /* 부모 흐름에 맞게 배치 */
+    float: none !important;      /* 둥둥 떠다니는 성질 제거 */
+    width: 100% !important;      /* 부모 너비에 딱 맞춤 */
+    max-width: 100%;             /* 혹시나 넘치는 것 방지 */
+    margin: 0 !important;
+    transform: none !important;  /* 억지로 이동시키는 속성 제거 */
+    background: rgba(255, 255, 255, 0.1); /* 배경 살짝 넣어서 구분 */
+  }
+
+  /* 아이템들이 왼쪽으로 쏠리는 것 방지 */
+  .navbar-collapse .dropdown-item {
+    width: 100% !important;
+    text-align: left;            /* 글자 정렬 확인 */
+    padding-left: 2rem !important; /* 메뉴 안쪽으로 들여쓰기 */
+    white-space: normal !important; /* 글자가 길어도 한 줄로 쭉 안 나가게 */
+  }
+}

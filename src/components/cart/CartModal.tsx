@@ -95,7 +95,7 @@ function CartModal({ show, onHide, clearCartStorage }) {
           onHide();
           navigate('/mypage');
         }}>
-          구매하기
+          구매페이지로 이동
         </Button>
         
       </Modal.Footer>

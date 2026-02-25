@@ -18,7 +18,8 @@ import { clearUser } from '@/store/authSlice';
 import { RootState } from '@/store/store';
 import { toast } from 'react-hot-toast';
 import { clearLike } from '@/store/likesSlice';
-
+import { clearWishlist } from '@/store/wishlistSlice';
+import { clearCart } from '@/store/cartSlice';
 
 
 function NavBar() {
@@ -42,15 +43,16 @@ function NavBar() {
   const handleLogout = () => {
 
     dispatch(clearUser());
+    dispatch(clearCart());
     dispatch(clearLike());
+    dispatch(clearWishlist());
+
     localStorage.removeItem("loginUser");
 
     toast.success("로그아웃 되었습니다. 또 만나요! 👋", {
-      icon: '🏃', // 아이콘도 바꿀 수 있어요 (선택사항)
       duration: 2000,
     });
 
-    navigate('/');
   };
 
   useEffect(() => {
@@ -140,7 +142,7 @@ function NavBar() {
             {loginUser ? (
               <>
                 <NavDropdown.Header>
-                  {loginUser}님
+                  {loginUser.userId}님
                 </NavDropdown.Header>
                 <NavDropdown.Item as={NavLink} to="/mypage">
                   마이페이지

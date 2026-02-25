@@ -5,17 +5,24 @@ import { animals } from '../data/data';
 
 const animalsSlice = createSlice({
   name: 'animals',
-  initialState: animals,
-  reducers: {}
+  initialState: {
+    items: animals 
+    },
+  reducers: {
+    deleteAnimal: (state, action) => {
+      state.items = state.items.filter(item => item.id !== action.payload);
+    }
+  }
 })
 
+export const { deleteAnimal } = animalsSlice.actions; 
+export default animalsSlice.reducer;
 
 
-export default animalsSlice.reducer; 
 
 export const selectSpecialAnimals = state =>
-  state.animals.filter(a => a.isSpecial);
+  state.animals.items.filter(a => a.isSpecial);
 
 export const selectPopularAnimals = state =>
-  [...state.animals].sort((a, b) => b.seedLikes - a.seedLikes);
+  [...state.animals.items].sort((a, b) => b.seedLikes - a.seedLikes);
 

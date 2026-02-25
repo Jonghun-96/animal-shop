@@ -10,6 +10,7 @@ body{
   font-family: 'Noto Sans KR', 'Fira Code', sans-serif;  
 }
 
+
 html{
   scroll-behavior: auto !important
 } 
@@ -52,3 +53,18 @@ div{
 .center{
   text-align: center;
 }
+
+
+
+
+/* 다크모드일때 드롭다운 텍스트 색깔 조정 */
+.dark-mode .dropdown-item {
+  color: #ffffff !important;
+}
+
+.dark-mode .dropdown-item:hover {
+  background-color: #495057 !important;
+  color: #ffffff !important;
+}
+
+

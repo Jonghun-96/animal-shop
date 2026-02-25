@@ -10,11 +10,19 @@ const themeSlice = createSlice({
   reducers: {
     toggleDarkMode: (state) => { 
       state.darkMode = !state.darkMode; 
-      localStorage.setItem('theme', state.darkMode ? 'dark' : 'light');
+
+      const newTheme = state.darkMode ? 'dark' : 'light';
+
+      localStorage.setItem('theme', newTheme);
+      document.documentElement.setAttribute('data-bs-theme', newTheme);
     },
     setDarkMode: (state, action) => {
       state.darkMode = action.payload;
-      localStorage.setItem('theme', state.darkMode ? 'dark' : 'light');
+
+      const newTheme = state.darkMode ? 'dark' : 'light';
+
+      localStorage.setItem('theme', newTheme);
+      document.documentElement.setAttribute('data-bs-theme', newTheme);
     }
 
   }

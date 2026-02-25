@@ -1,41 +1,79 @@
 
-
-
-
-.dark-mode .checkoutBox-left,
-.dark-mode .checkoutBox-right{
-  background-color: #333;
-}
-
-
-.checkoutBox-left h5{
+.checkoutBox-left h5 {
   margin-bottom: 30px;
 }
 
-
-
-.dark-mode .checkout-info{
-  max-width: 600px;
+.checkout-info input::placeholder {
+  font-size: 11px;
 }
 
-.dark-mode h5,.dark-mode span{
+.checkout-rightbox .text-danger {
+  font-size: 20px;
+}
+
+/* 다크모드 대응 */
+.dark-mode .checkoutBox-left,
+.dark-mode .checkoutBox-right {
+  background-color: #333;
+}
+
+.dark-mode h5, 
+.dark-mode span,
+.dark-mode .checkout-item-name,
+.dark-mode .checkout-item-price {
   color: #EEEEEE;
 }
 
 
 
-.checkout-info input::placeholder{
-  font-size: 11px;
+.order-summary-container {
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 1.5rem 0;
+  padding-right: 5px;
 }
 
-.checkout-total-price div{
-  width: 100%;
+.checkout-item-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  gap: 12px;
 }
 
-.list-group-flush>.list-group-item{
-  max-width: 100%;
-} 
-
-.checkout-rightbox .text-danger{
-  font-size: 20px;
+.dark-mode .checkout-item-row {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
+
+.checkout-item-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.checkout-item-name {
+  flex: 1; /* 이름이 남은 공간을 다 차지함 */
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.checkout-item-count {
+  font-size: 0.85rem;
+  color: #888;
+  min-width: 35px;
+  text-align: center;
+}
+
+.checkout-item-price {
+  font-size: 0.9rem;
+  font-weight: 700;
+  min-width: 85px;
+  text-align: right;
+}
+
+

@@ -1,3 +1,4 @@
+import { json } from "node:stream/consumers";
 
 const USERS_KEY = 'users';
 
@@ -19,7 +20,8 @@ export function setLoginUser(userId) {
 }
 
 export function getLoginUser() {
-  return localStorage.getItem(LOGIN_USER_KEY);
+  const data = localStorage.getItem(LOGIN_USER_KEY);
+  return data ? JSON.parse(data) : null;
 }
 
 export function logout() {

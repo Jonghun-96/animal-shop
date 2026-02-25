@@ -15,16 +15,16 @@ const ID_REGEX = /^[a-zA-Z0-9]+$/;
 function SignupPage(){
 
   const navigate = useNavigate();
-  const [userId, setUserId] = useState('');
+  const [inputId, setInputId] = useState('');
   const [password, setPassword] = useState('');
   const [showPw, setShowPw] = useState(false);
 
-  const isIdLengthValid = userId.length >= MIN_ID_LENGTH;
-  const isIdRegexValid = ID_REGEX.test(userId);
+  const isIdLengthValid = inputId.length >= MIN_ID_LENGTH;
+  const isIdRegexValid = ID_REGEX.test(inputId);
   const isPwValid = password.length >= MIN_PW_LENGTH;
 
   const isFormValid =
-    userId &&
+    inputId &&
     password &&
     isIdLengthValid &&
     isIdRegexValid &&
@@ -32,7 +32,13 @@ function SignupPage(){
 
 
   const handleSignUp = () => {
-    const result = signup(userId, password);
+    const result = signup(inputId, password);
+
+    if (inputId.trim().toLowerCase() === 'admin') {
+      toast.error("사용할 수 없는 아이디입니다.");
+      return;
+    }
+
 
     if (!result || !result.success) {
       toast.error(result?.message || '회원가입에 실패했습니다 😢');
@@ -63,13 +69,13 @@ function SignupPage(){
           <div className="d-flex justify-content-between align-items-center">
             <Form.Label className="mb-1">아이디</Form.Label>
 
-            {userId && !isIdRegexValid && (
+            {inputId && !isIdRegexValid && (
               <small className="text-danger">
                 영문/숫자만 가능
               </small>
             )}
 
-            {userId && !isIdLengthValid && isIdRegexValid && (
+            {inputId && !isIdLengthValid && isIdRegexValid && (
               <small className="text-danger">
                 {MIN_ID_LENGTH}자 이상
               </small>
@@ -79,9 +85,9 @@ function SignupPage(){
           <Form.Control
             type="text"
             placeholder="아이디"
-            value={userId}
-            onChange={(e) => setUserId(e.target.value)}
-            isInvalid={userId !== "" && (!isIdRegexValid || !isIdLengthValid)}
+            value={inputId}
+            onChange={(e) => setInputId(e.target.value)}
+            isInvalid={inputId !== "" && (!isIdRegexValid || !isIdLengthValid)}
           />
         </Form.Group>
 

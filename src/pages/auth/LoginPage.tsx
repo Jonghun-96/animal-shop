@@ -2,17 +2,16 @@ import { Link } from 'react-router-dom';
 import { Button, Container, Card, Form, Alert } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login, setLoginUser, logout } from '../../utils/authService';
+import { login, setLoginUser, logout } from '@/utils/authService';
 import { getLoginUser } from '../../utils/authStorage';
 import { useDispatch } from "react-redux";
 import { getCart, saveCart } from "../../utils/cartStorage";
-import { setCart } from "../../store/cartSlice";
-import { setUser } from '../../store/authSlice';
+import { setCart } from "@/store/cartSlice";
+import { setUser } from '@/store/authSlice';
 import { useLocation } from "react-router-dom";
 import Toast from 'react-bootstrap/Toast';
 import './LoginPage.css';
 import { toast } from 'react-hot-toast';
-
 
 
 
@@ -35,9 +34,9 @@ function LoginPage(){
 
     const result = login(inputId, inputPassword);
 
-    // ❌ 에러 발생 시
+    //  에러 발생 시
     if (!result.success) {
-      toast.error(result.message); //  빨간색 에러 토스트
+      toast.error(result.message);
       return;
     } 
 
@@ -53,6 +52,15 @@ function LoginPage(){
       else { mergedCart.push(guestItem); }
     });
 
+
+    const userData = {
+      userId: inputId,
+      role: result.role
+    };
+
+    dispatch(setUser(userData));
+    localStorage.setItem('loginUser', JSON.stringify(userData));
+
     saveCart(mergedCart, userId);
     localStorage.removeItem("cart_guest");
 
@@ -60,14 +68,16 @@ function LoginPage(){
     toast.success(`${inputId}님, 환영합니다! 🎉`);
 
     dispatch(setCart(mergedCart));
-    dispatch(setUser(inputId));
 
     setTimeout(() => {
-      navigate('/');
+      if (userData.role === 'ADMIN') {
+        navigate('/admin');
+      }else{
+        navigate('/');
+      }  
     }, 1500); // 토스트를 읽을 시간을 조금 더 줌
+
   };
-
-
 
 
 
@@ -79,6 +89,8 @@ function LoginPage(){
       navigate('/');
     }
   }, [navigate])
+
+
 
   return (
   <div className="d-flex justify-content-center align-items-center min-vh-100">

@@ -1,10 +1,10 @@
 
 
 import { useSelector } from 'react-redux';
-import { selectPopularAnimals } from '../store/animalsSlice';
-import AnimalListPage from './AnimalListPage';
+import { selectPopularAnimals } from '../../store/animalsSlice';
+import AnimalListPage from '../AnimalListPage';
 import { useMemo } from 'react';
-import { animals } from '../data/data'
+import { animals } from '../../data/data'
 
 
 

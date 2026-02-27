@@ -1,0 +1,17 @@
+
+
+.review-list-container{
+  margin: 0 10vw;
+  
+}
+
+
+.review-list-container h5,
+.review-list-container p,
+.review-list-container span:first-child{
+  padding-left: 24px;
+}
+
+.review-delete{
+  margin-right: 24px;
+}

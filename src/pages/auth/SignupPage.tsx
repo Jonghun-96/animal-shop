@@ -17,25 +17,36 @@ function SignupPage(){
   const navigate = useNavigate();
   const [inputId, setInputId] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPw, setShowPw] = useState(false);
+  
 
   const isIdLengthValid = inputId.length >= MIN_ID_LENGTH;
   const isIdRegexValid = ID_REGEX.test(inputId);
   const isPwValid = password.length >= MIN_PW_LENGTH;
+  const isPwMatch = password === confirmPassword;
 
   const isFormValid =
     inputId &&
     password &&
     isIdLengthValid &&
     isIdRegexValid &&
-    isPwValid;
+    isPwValid&&
+    isPwMatch;
 
 
-  const handleSignUp = () => {
+  const handleSignUp = (e) => {
+
+    if (e) e.preventDefault();
     const result = signup(inputId, password);
 
     if (inputId.trim().toLowerCase() === 'admin') {
       toast.error("사용할 수 없는 아이디입니다.");
+      return;
+    }
+
+    if (!isPwMatch) {
+      toast.error("비밀번호가 일치하지 않습니다.");
       return;
     }
 
@@ -63,7 +74,7 @@ function SignupPage(){
         가입할 아이디와 비밀번호를 입력하세요
       </p>
 
-      <Form>
+      <Form onSubmit={handleSignUp}>
         {/* 아이디 */}
         <Form.Group className="mb-3">
           <div className="d-flex justify-content-between align-items-center">
@@ -112,6 +123,25 @@ function SignupPage(){
           />
         </Form.Group>
 
+        <Form.Group className="mb-3">
+          <div className="d-flex justify-content-between align-items-center">
+            <Form.Label className="mb-1 small fw-bold">비밀번호 확인</Form.Label>
+            {confirmPassword && !isPwMatch && (
+              <small className="text-danger">비밀번호가 일치하지 않음</small>
+            )}
+            {confirmPassword && isPwMatch && (
+              <small className="text-success">비밀번호 일치 ✨</small>
+            )}
+          </div>
+          <Form.Control
+            type={showPw ? "text" : "password"}
+            placeholder="비밀번호 재입력"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            isInvalid={confirmPassword !== "" && !isPwMatch}
+          />
+        </Form.Group>
+
         <Form.Check
           type="checkbox"
           id="showPwCheck"
@@ -125,7 +155,8 @@ function SignupPage(){
           variant="dark"
           className="w-100 mt-2"
           disabled={!isFormValid}
-          onClick={handleSignUp}
+          type="submit"
+          
         >
           회원 가입
         </Button>

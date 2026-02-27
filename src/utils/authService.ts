@@ -55,6 +55,17 @@ export function login(inputId: string, inputPassword: string): LoginResult {
     return { success: false, message: "비밀번호가 틀렸습니다" };
   }
 
+  if (user.isActive === false) {
+    if (user.isActive === false) {
+      return { 
+        success: false, 
+        role: 'USER', 
+        message: "탈퇴한 계정입니다. 고객센터에 문의하세요." 
+      };
+    }
+    return;
+  }
+
   setLoginUser(inputId);
 
   return { 

@@ -9,4 +9,5 @@ export type Animal = {
   seedLikes: number;
   img: string;
   description: string;
+  stock: number;
 };

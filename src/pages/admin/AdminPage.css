@@ -1,0 +1,8 @@
+
+
+.dark-mode .dashboard-btn{
+  background-color: #eee;
+}
+.dark-mode .dashboard-btn:hover{
+  background-color: #555;
+}

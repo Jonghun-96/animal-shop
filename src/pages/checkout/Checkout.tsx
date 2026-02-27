@@ -2,7 +2,7 @@ import { Container, Row, Col, Card, Form, Button, ListGroup } from 'react-bootst
 import './Checkout.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { clearCart } from '../store/cartSlice';
+import { clearCart } from '../../store/cartSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
 

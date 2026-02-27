@@ -73,7 +73,7 @@ function LoginPage(){
       if (userData.role === 'ADMIN') {
         navigate('/admin');
       }else{
-        navigate('/');
+        navigate(-1);
       }  
     }, 1500); // 토스트를 읽을 시간을 조금 더 줌
 

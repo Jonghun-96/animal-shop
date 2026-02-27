@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit'
+import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 
 let orderSlice = createSlice({
@@ -9,6 +9,13 @@ let orderSlice = createSlice({
     addOrder(state, action) {
       
       state.unshift(action.payload);
+    },
+    updateStatus: (state, action: PayloadAction<{id: number; status: string}>) => {
+      const { id, status } = action.payload;
+      const order = state.items.find(item => item.id === id);
+      if (order) {
+        order.status = status;
+      }
     }
   }
 })

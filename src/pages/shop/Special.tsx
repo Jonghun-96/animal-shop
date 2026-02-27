@@ -1,9 +1,9 @@
 
 import { useSelector } from 'react-redux';
-import { selectSpecialAnimals } from '../store/animalsSlice';
-import AnimalListPage from './AnimalListPage';
+import { selectSpecialAnimals } from '../../store/animalsSlice';
+import AnimalListPage from '../AnimalListPage';
 import { useState, useEffect, useMemo } from 'react';
-import { animalsShuffled } from '../data/data';
+import { animalsShuffled } from '../../data/data';
 
 
 

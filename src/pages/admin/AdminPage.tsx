@@ -5,8 +5,8 @@ import './AdminPage.css';
 import { useState } from 'react';
 import ProductManager from './ProductManager';
 import OrderManager from './OrderManager'; 
-import UserManager from './UserManager';
-import StatManager from './StatManager';
+// import UserManager from './UserManager';
+// import StatManager from './StatManager';
 
 
 const AdminPage = () => {
@@ -41,7 +41,7 @@ const AdminPage = () => {
           🛠️ 관리자 센터 {view !== 'main' && <small className="text-muted fs-5">| {view.toUpperCase()}</small>}
         </h2>
         {view !== 'main' && (
-          <button className="btn btn-outline-dark btn-sm" onClick={() => setView('main')}>
+          <button className="btn btn-outline-dark btn-lg outline-secondary dashboard-btn" onClick={() => setView('main')}>
             🏠 대시보드로 돌아가기
           </button>
         )}
@@ -53,10 +53,11 @@ const AdminPage = () => {
       {/* [CASE 1: 메인 대시보드] */}
       {view === 'main' && (
         <div className="row g-4">
+
           {/* 상품 관리 카드 */}
           <div className="col-md-3">
             <div 
-            className="card p-4 shadow-sm h-100 border-0 bg-light text-center" 
+            className="card p-4 shadow-sm h-100 border-0 bg-body text-center" 
             onClick={() => setView('products')} 
             style={{cursor:'pointer'}}>
               <h1 className="display-4">📦</h1>
@@ -69,7 +70,7 @@ const AdminPage = () => {
           {/* 주문 관리 카드 */}
           <div className="col-md-3">
             <div 
-            className="card p-4 shadow-sm h-100 border-0 bg-light text-center" 
+            className="card p-4 shadow-sm h-100 border-0 bg-body text-center" 
             onClick={() => setView('orders')} 
             style={{cursor:'pointer'}}>
               <h1 className="display-4">📋</h1>
@@ -81,7 +82,7 @@ const AdminPage = () => {
 
           {/* 회원 관리 카드 */}
           <div className="col-md-3">
-            <div className="card p-4 shadow-sm h-100 border-0 bg-light text-center" 
+            <div className="card p-4 shadow-sm h-100 border-0 bg-body text-center" 
             onClick={() => setView('users')} 
             style={{cursor:'pointer'}}>
               <h1 className="display-4">👥</h1>
@@ -94,7 +95,7 @@ const AdminPage = () => {
           {/* 매출 통계 카드 */}
           <div className="col-md-3">
             <div 
-            className="card p-4 shadow-sm h-100 border-0 bg-light text-center" 
+            className="card p-4 shadow-sm h-100 border-0 bg-body text-center" 
             onClick={() => setView('stats')} 
             style={{cursor:'pointer'}}>
               <h1 className="display-4">📊</h1>
@@ -108,7 +109,7 @@ const AdminPage = () => {
 
       {/* [CASE 2: 각 세부 관리 화면] */}
       {view === 'products' && <ProductManager />}
-      {view === 'orders' && <div className="p-5 bg-white shadow rounded">주문 관리 준비 중...</div>}
+      {view === 'orders' && <OrderManager/>}
       {view === 'users' && <div className="p-5 bg-white shadow rounded">회원 관리 준비 중...</div>}
       {view === 'stats' && <div className="p-5 bg-white shadow rounded">통계 분석 준비 중...</div>}
 

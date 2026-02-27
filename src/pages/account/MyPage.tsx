@@ -7,6 +7,7 @@ import { addToCart } from "@/store/cartSlice";
 import { FaStar, FaCartShopping, FaUser, FaCartPlus, FaXmark, FaCircleInfo, FaClipboardList } from "react-icons/fa6";
 import './MyPage.css';
 import { useState, useEffect } from 'react';
+import { deleteAccount } from "@/store/authSlice";
 
 
 function MyPage() {
@@ -41,6 +42,13 @@ function MyPage() {
     (state: RootState) => state.auth.loginUser
   );
 
+  const handlePasswordChange = () => {
+    navigate('/changePassword');
+  }
+
+  const deleteAccount = () => {
+    navigate('/deleteAccount');
+  } 
 
   return (
     <Container style={{ marginTop: "120px", marginBottom: "80px", maxWidth: "1050px" }}>
@@ -68,6 +76,7 @@ function MyPage() {
                     <span className="me-1">🛠️</span> 관리자 페이지 이동
                   </button>
                 )}
+
               </>
             ) : (
               <>
@@ -78,6 +87,29 @@ function MyPage() {
               </>
             )}
           </div>
+
+          {loginUser && (
+            <div className="ms-auto d-flex flex-column align-items-end gap-2 mt-3 flex-wrap">
+              {/* 비밀번호 변경 버튼 */}
+              <button 
+                className="btn btn-sm btn-outline-secondary d-flex align-items-center"
+                onClick={handlePasswordChange}
+                style={{ whiteSpace: 'nowrap' }}
+              >
+                🔒 비밀번호 변경
+              </button>
+
+              {/* 관리자가 아닐 때만 탈퇴 버튼 노출 */}
+              {loginUser.role?.toUpperCase() !== 'ADMIN' && (
+                <button 
+                  className="btn btn-sm btn-link text-danger text-decoration-none p-0 small"
+                  onClick={deleteAccount}
+                >
+                  회원 탈퇴
+                </button>
+              )}
+            </div>
+          )}
 
         </Card.Body>
       </Card>

@@ -23,7 +23,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 329,
     img: images[`peacock.png`],
-    description: `내가 제일 화려해`
+    description: `내가 제일 화려해`,
+    stock: 8
   },
   {
     id: 2,
@@ -33,7 +34,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 740,
     img: images[`duck.png`],
-    description: `뒤뚱뒤뚱 출근 중`
+    description: `뒤뚱뒤뚱 출근 중`,
+    stock: 4
   },
   {
     id: 3,
@@ -43,7 +45,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 14,
     img: images[`elephant.png`],
-    description: `덩치는 제일 큽니다`
+    description: `덩치는 제일 큽니다`,
+    stock: 10
   },
   {
     id: 4,
@@ -53,7 +56,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 26,
     img: images[`bear.png`],
-    description: `보기만 해도 따뜻함`
+    description: `보기만 해도 따뜻함`,
+    stock: 11
   },
   {
     id: 5,
@@ -63,7 +67,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 33,
     img: images[`giraffe.png`],
-    description: `멀리 보는 친구`
+    description: `멀리 보는 친구`,
+    stock: 10
   },
   {
     id: 6,
@@ -73,7 +78,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 6,
     img: images[`hippo.png`],
-    description: `부피만큼 포근함도 큼`
+    description: `부피만큼 포근함도 큼`,
+    stock: 10
   },
   {
     id: 7,
@@ -83,7 +89,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 9,
     img: images[`lion.png`],
-    description: `초원의 왕이 되고 싶어`
+    description: `초원의 왕이 되고 싶어`,
+    stock: 2
   },
   {
     id: 8,
@@ -93,7 +100,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 556,
     img: images[`penguin.png`],
-    description: `빙판 위의 뒤뚱러!`
+    description: `빙판 위의 뒤뚱러!`,
+    stock: 0
   },
   {
     id: 9,
@@ -103,7 +111,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 44,
     img: images[`fox.png`],
-    description: `여우짓 잘해요`
+    description: `여우짓 잘해요`,
+    stock: 10
   },
   {
     id: 10,
@@ -113,7 +122,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 154,
     img: images[`turtle.png`],
-    description: `느려도 괜찮아`
+    description: `느려도 괜찮아`,
+    stock: 0
   },
   {
     id: 11,
@@ -123,7 +133,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 19,
     img: images[`chicken.png`],
-    description: `알 낳고 퇴근합니다`
+    description: `알 낳고 퇴근합니다`,
+    stock: 10
   },
   {
     id: 12,
@@ -133,7 +144,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 338,
     img: images[`sheep.png`],
-    description: `포근함 100% 충전`
+    description: `포근함 100% 충전`,
+    stock: 8
   },
   {
     id: 13,
@@ -143,7 +155,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 26,
     img: images[`raccoon.png`],
-    description: `몰래 간식 숨겨두는 타입`
+    description: `몰래 간식 숨겨두는 타입`,
+    stock: 11
   },
   {
     id: 14,
@@ -153,7 +166,8 @@ export const animals :Animal[] = [
     isSpecial: true,
     seedLikes: 30,
     img: images[`bremen_musicians.png`],
-    description: `오늘도 연습 중..`
+    description: `오늘도 연습 중..`,
+    stock: 2
   },
   {
     id: 15,
@@ -163,7 +177,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 7,
     img: images[`crocodile.png`],
-    description: `악어떼가 나올라`
+    description: `악어떼가 나올라`,
+    stock: 10
   },
   {
     id: 16,
@@ -173,7 +188,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 5,
     img: images[`pig.png`],
-    description: `먹고 바로 눕기 장인`
+    description: `먹고 바로 눕기 장인`,
+    stock: 10
   },
   {
     id: 17,
@@ -183,7 +199,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes:  402,
     img: images[`desert_fox.png`],
-    description: `사막의 귀염둥이`
+    description: `사막의 귀염둥이`,
+    stock: 10
   },
   {
     id: 18,
@@ -193,7 +210,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 427,
     img: images[`rabbit.png`],
-    description: `깡총깡총 잘 뛰어다님`
+    description: `깡총깡총 잘 뛰어다님`,
+    stock: 11
   },
   {
     id: 19,
@@ -203,7 +221,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 890,
     img: images[`squirrel.png`],
-    description: `볼따구 안에 도토리 있음`
+    description: `볼따구 안에 도토리 있음`,
+    stock: 15
   },
   {
     id: 20,
@@ -213,7 +232,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 563,
     img: images[`seal.png`],
-    description: `박수 담당입니다`
+    description: `박수 담당입니다`,
+    stock: 1
   },
   {
     id: 21,
@@ -223,7 +243,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 12,
     img: images[`owl.png`],
-    description: `밤샘 감시 중`
+    description: `밤샘 감시 중`,
+    stock: 10
   },
   {
     id: 22,
@@ -233,7 +254,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 27,
     img: images[`ferret.png`],
-    description: `행복한 세상이 좋아`
+    description: `행복한 세상이 좋아`,
+    stock: 10
   },
   {
     id: 23,
@@ -243,7 +265,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 335,
     img: images[`cat.png`],
-    description: `냥냥펀치!`
+    description: `냥냥펀치!`,
+    stock: 0
   },
   {
     id: 24,
@@ -253,7 +276,8 @@ export const animals :Animal[] = [
     isSpecial: true,
     seedLikes: 108,
     img: images[`rudolph_santa.png`],
-    description: `연말에 제일 바빠요`
+    description: `연말에 제일 바빠요`,
+    stock: 7
   },
   {
     id: 25,
@@ -263,7 +287,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 34,
     img: images[`puppy.png`],
-    description: `고양이 라이벌입니다`
+    description: `고양이 라이벌입니다`,
+    stock: 2
   },
   {
     id: 26,
@@ -273,7 +298,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 16,
     img: images[`capybara.png`],
-    description: `온순하고 느긋합니다`
+    description: `온순하고 느긋합니다`,
+    stock: 10
   },
   {
     id: 27,
@@ -283,7 +309,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 9,
     img: images[`horse.png`],
-    description: `마라톤 1등`
+    description: `마라톤 1등`,
+    stock: 12
   },
   {
     id: 28,
@@ -293,7 +320,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 39,
     img: images[`sparrow.png`],
-    description: `뭐든지 잘 주워먹음`
+    description: `뭐든지 잘 주워먹음`,
+    stock: 3
   },
   {
     id: 29,
@@ -303,7 +331,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 48,
     img: images[`frog.png`],
-    description: `비오는 날이 좋아`
+    description: `비오는 날이 좋아`,
+    stock: 10
   },
   {
     id: 30,
@@ -313,7 +342,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 17,
     img: images[`eagle.png`],
-    description: `하늘의 제왕`
+    description: `하늘의 제왕`,
+    stock: 16
   },
   {
     id: 31,
@@ -323,7 +353,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 130,
     img: images[`mouse.png`],
-    description: `이름은 제리일거 같네요`
+    description: `이름은 제리일거 같네요`,
+    stock: 0
   },
   {
     id: 32,
@@ -333,7 +364,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 224,
     img: images[`swan.png`],
-    description: `우아함의 끝판왕`
+    description: `우아함의 끝판왕`,
+    stock: 10
   },
   {
     id: 33,
@@ -343,7 +375,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 347,
     img: images[`parrot.png`],
-    description: `말동무가 되어줍니다`
+    description: `말동무가 되어줍니다`,
+    stock: 4
   },  
   {
     id: 34,
@@ -353,7 +386,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 92,
     img: images[`ostrich.png`],
-    description: `날지는 못한다네요`
+    description: `날지는 못한다네요`,
+    stock: 10
   },  
   {
     id: 35,
@@ -363,7 +397,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 130,
     img: images[`flamingo.png`],
-    description: `모델포즈를 잘합니다`
+    description: `모델포즈를 잘합니다`,
+    stock: 7
   },  
   {
     id: 36,
@@ -373,7 +408,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 332,
     img: images[`monkey.png`],
-    description: `쌀을 잘 팔아요`
+    description: `쌀을 잘 팔아요`,
+    stock: 0
   },  
   {
     id: 37,
@@ -383,7 +419,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 22,
     img: images[`rhino.png`],
-    description: `뿔이 멋진 강력한 탱커`
+    description: `뿔이 멋진 강력한 탱커`,
+    stock: 10
   },  
   {
     id: 38,
@@ -393,7 +430,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 370,
     img: images[`meerkat.png`],
-    description: `당신을 지켜봅니다`
+    description: `당신을 지켜봅니다`,
+    stock: 13
   },  
   {
   id: 39,
@@ -403,7 +441,8 @@ export const animals :Animal[] = [
   isSpecial: true,
   seedLikes: 188,
   img: images[`springflower_deer.png`],
-  description: `봄내음을 품은 사슴`
+  description: `봄내음을 품은 사슴`,
+  stock: 21
 },    
   {
     id: 40,
@@ -413,7 +452,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 866,
     img: images[`alpaca.png`],
-    description: `침을 자주 뱉습니다`
+    description: `침을 자주 뱉습니다`,
+    stock: 14
   },    
   {
     id: 41,
@@ -423,7 +463,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 47,
     img: images[`camel.png`],
-    description: `사막의 택시`
+    description: `사막의 택시`,
+    stock: 5
   },
   {
     id: 42,
@@ -433,7 +474,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 32,
     img: images[`hedgehog.png`],
-    description: `따봉도치야 고마워`
+    description: `따봉도치야 고마워`,
+    stock: 5
   },
   {
     id: 43,
@@ -443,7 +485,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 240,
     img: images[`woodpecker.png`],
-    description: `딱딱딱딱딱딱`
+    description: `딱딱딱딱딱딱`,
+    stock: 2
   },  
   {
     id: 44,
@@ -453,7 +496,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 26,
     img: images[`koala.png`],
-    description: `잠이 많아요`
+    description: `잠이 많아요`,
+    stock: 9
   },
   {
     id: 45,
@@ -463,7 +507,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 11,
     img: images[`milkcow.png`],
-    description: `4구 대형 우유통 보유`
+    description: `4구 대형 우유통 보유`,
+    stock: 20
   },
   {
     id: 46,
@@ -473,7 +518,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 19,
     img: images[`cheetah.png`],
-    description: `동물계의 우사인볼트`
+    description: `동물계의 우사인볼트`,
+    stock: 10
   }, 
   {
     id: 47,
@@ -483,7 +529,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 37,
     img: images[`tiger.png`],
-    description: `떡 하나 주면 안 잡아 먹지`
+    description: `떡 하나 주면 안 잡아 먹지`,
+    stock: 10
   },  
   {
     id: 48,
@@ -493,7 +540,8 @@ export const animals :Animal[] = [
     isSpecial: true,
     seedLikes: 121,
     img: images[`gumiho.png`],
-    description: `아홉 꼬리를 가진 요물`
+    description: `아홉 꼬리를 가진 요물`,
+    stock: 10
   },  
   {
     id: 49,
@@ -503,7 +551,8 @@ export const animals :Animal[] = [
     isSpecial: true,
     seedLikes: 366,
     img: images[`haetae.png`],
-    description: `불을 뿜는 수호신`
+    description: `불을 뿜는 수호신`,
+    stock: 11
   },  
   {
     id: 50,
@@ -513,7 +562,8 @@ export const animals :Animal[] = [
     isSpecial: true,
     seedLikes: 281,
     img: images[`haechi.png`],
-    description: `용맹함과 지혜의 상징`
+    description: `용맹함과 지혜의 상징`,
+    stock: 7
   },  
   {
     id: 51,
@@ -523,7 +573,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 40,
     img: images[`shark.png`],
-    description: `바다의 포식자`
+    description: `바다의 포식자`,
+    stock: 4
   }, 
   {
     id: 52,
@@ -533,7 +584,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 70,
     img: images[`skunk.png`],
-    description: `향기(?)를 조심하세요`
+    description: `향기(?)를 조심하세요`,
+    stock: 15
   },
   {
     id: 53,
@@ -543,7 +595,8 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 174,
     img: images[`otter.png`],
-    description: `물놀이 전문가`
+    description: `물놀이 전문가`,
+    stock: 17
   },
   {
     id: 54,
@@ -553,6 +606,18 @@ export const animals :Animal[] = [
     isSpecial: false,
     seedLikes: 71,
     img: images[`deer.png`],
-    description: `숲 속의 평화로운 친구`
+    description: `숲 속의 평화로운 친구`,
+    stock: 8
+  },
+  {
+    id: 55,
+    name: `판다`,
+    category: `large`,
+    price: 24500,
+    isSpecial: false,
+    seedLikes: 558,
+    img: images[`panda.png`],
+    description: `쿵푸도 잘함`,
+    stock: 0
   },
 ]

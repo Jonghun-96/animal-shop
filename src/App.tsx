@@ -40,7 +40,7 @@ import { deleteAccount, setUser } from '@/store/authSlice';
 import { setCart } from "@/store/cartSlice";
 import ChangePassword from './pages/auth/ChangePassword';
 import DeleteAccount from './pages/auth/DeleteAccount';
-
+import HaetaeHaechi from './pages/shop/HaetaeHaechi';
 
 
 function App() {
@@ -103,6 +103,8 @@ function App() {
           </AdminRoute>
         }/>
 
+
+        <Route path='/haetaihaechi' element={<HaetaeHaechi/>}/>
         <Route path='/mypage' element={<MyPage/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
         <Route path='/orderComplete' element={<OrderComplete/>}/>

@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 const imageModules: any = import.meta.glob('../../images/banner/*.jpg', { eager: true });
 
 // 2. 파일명만 키값으로 갖는 깨끗한 객체로 변환
-// 예: { "peacock.png": "/assets/peacock.hash.png", ... }
 const images: { [key: string]: string } = {};
 for (const path in imageModules) {
   const fileName = path.split('/').pop() || ''; 
@@ -24,7 +23,7 @@ function MallIntro() {
   <>
 
     <Carousel fade interval={4000}>
-      <Carousel.Item onClick={() => navigate('/search?keyword=해')}>
+      <Carousel.Item onClick={() => navigate('/haetaihaechi')}>
         <img className="d-block w-100 mainImg" src={images[`banner_img1.jpg`]} alt="배너1" />
         <Carousel.Caption>
           <span>해태와 해치, 수호신을 피규어로 재해석하다</span>

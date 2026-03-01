@@ -110,6 +110,8 @@ function LoginPage(){
           />
         </Form.Group>
 
+        
+
         <Form.Group className="mb-3">
           <Form.Label>비밀번호</Form.Label>
           <Form.Control
@@ -136,6 +138,18 @@ function LoginPage(){
           로그인
         </Button>
       </Form>
+
+      <Button 
+        variant="outline-secondary" 
+        size="sm" 
+        className="w-100 mt-2"
+        onClick={() => {
+          setInputId('admin');
+          setInputPassword('admin1234!');
+        }}
+      >
+        관리자 계정 정보 자동 입력
+      </Button>
 
       <p className="text-center mt-3 mb-0">
         계정이 없으신가요?{" "}

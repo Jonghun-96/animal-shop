@@ -42,6 +42,8 @@ React Router 기반 페이지 전환
 반응형 UI 및 다크모드 지원
 
 관리자 모드(Admin Mode) 구현
+
+     admin admin1234!
   
      관리자 전용 로그인 분리
   

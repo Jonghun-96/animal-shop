@@ -39,9 +39,8 @@ const ChangePassword = () => {
     }
 
     // 2. 유효성 검사: 현재 비밀번호가 맞는지 확인 (로컬 데이터 기준)
-    // 실제 서버가 있다면 서버에서 확인하겠지만, 여기선 Redux의 users 데이터와 비교 가능합니다.
 
-    if (currentPw !== me.password) {
+    if (currentPw !== me?.password) {
       setError("현재 비밀번호가 일치하지 않습니다.");
       return;
     }
@@ -51,22 +50,18 @@ const ChangePassword = () => {
       return;
     }
 
-    // 3. 유효성 검사: 새 비밀번호 일치 확인
     if (newPw !== confirmPw) {
       setError("새 비밀번호 확인이 일치하지 않습니다.");
       return;
     }
 
-    // 4. 유효성 검사: 비밀번호 길이 (예: 4자 이상)
     if (newPw.length < 4) {
       setError("비밀번호는 최소 4자 이상이어야 합니다.");
       return;
     }
 
-    // 5. 리덕스 액션 실행 (비밀번호 변경)
     dispatch(changePassword({ userId: loginUser!.userId, newPw }));
 
-    // 6. 보안을 위한 후속 조치: 로그아웃 및 로그인 페이지 이동
     toast.success("비밀번호가 성공적으로 변경되었습니다.");
     navigate('/mypage');
   };
@@ -86,7 +81,7 @@ const ChangePassword = () => {
           {error && <Alert variant="danger" className="py-2 small">{error}</Alert>}
 
           <Form onSubmit={handleSubmit}>
-            {/* 현재 비밀번호 확인란 */}
+
             <Form.Group className="mb-3">
               <Form.Label className="small fw-bold text-secondary">현재 비밀번호</Form.Label>
               <Form.Control 
@@ -99,7 +94,7 @@ const ChangePassword = () => {
 
             <hr className="my-4 text-light" />
 
-            {/* 새 비밀번호 입력 */}
+
             <Form.Group className="mb-3">
               <Form.Label className="small fw-bold text-secondary">새 비밀번호</Form.Label>
               <Form.Control 
@@ -110,7 +105,7 @@ const ChangePassword = () => {
               />
             </Form.Group>
 
-            {/* 새 비밀번호 확인 */}
+
             <Form.Group className="mb-4">
               <Form.Label className="small fw-bold text-secondary">새 비밀번호 확인</Form.Label>
               <Form.Control 

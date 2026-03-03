@@ -143,7 +143,7 @@ const OrderManager = () => {
           </thead>
           <tbody>
             {filteredOrders.length > 0 ? (
-              filteredOrders.map((order) => (
+              filteredOrders.reverse().map((order) => (
 
                 <tr key={order.orderId}>
                   <td className="text-muted small">#{order.orderId}</td>

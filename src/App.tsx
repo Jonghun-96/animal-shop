@@ -43,6 +43,7 @@ import DeleteAccount from './pages/auth/DeleteAccount';
 import HaetaeHaechi from './pages/shop/HaetaeHaechi';
 
 
+
 function App() {
   const [count, setCount] = useState(0)
   const dispatch = useDispatch();
@@ -67,7 +68,6 @@ function App() {
 
     //  로그인을 안 했거나(null), 아이디가 'admin'이 아니면 튕겨내기
     if (!loginUser || loginUser.role !== 'ADMIN') {
-      alert("관리자만 접근 가능합니다!");
       return <Navigate to="/login" replace />;
     }
 

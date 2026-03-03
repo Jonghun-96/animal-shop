@@ -5,32 +5,47 @@ import './AdminPage.css';
 import { useState } from 'react';
 import ProductManager from './ProductManager';
 import OrderManager from './OrderManager'; 
-// import UserManager from './UserManager';
+import UserManager from '@/pages/admin/UserManager';
 // import StatManager from './StatManager';
+
+
+
+
 
 
 const AdminPage = () => {
 
   const navigate = useNavigate();
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state: any) => state.auth.user);
   const [view, setView] = useState('main');
   const products = useSelector((state: any) => state.animals.items) || [];
+  const [orders, setOrders] = useState<any[]>([]);
+
+  const allUsers = useSelector((state: any) => state.auth.users) || [];
+  const userCount = allUsers?.length || 0;
+
+  useEffect(() => {
+    const savedOrders = localStorage.getItem('petbit_orders');
+
+    if (savedOrders) {
+      setOrders(JSON.parse(savedOrders));
+    }
+  }, [view])
+
 
 
   useEffect(() => {
 
     if (user === undefined) return; 
-
-
-    const savedUser = JSON.parse(localStorage.getItem('loginUser'));
+    
+    const savedUser = JSON.parse(localStorage.getItem('loginUser') || 'null');
     const currentRole = user?.role || savedUser?.role;
 
-
-    if (!user || user.role.toUpperCase() !== 'ADMIN') {
+    if (!savedUser || savedUser.role?.toUpperCase() !== 'ADMIN') {
       alert('접근 권한이 없습니다.');
       navigate('/');
     }
-  }, [user, navigate]);
+  }, []);
 
 
   return (
@@ -75,7 +90,7 @@ const AdminPage = () => {
             style={{cursor:'pointer'}}>
               <h1 className="display-4">📋</h1>
               <h4 className="fw-bold">주문 관리</h4>
-              <p className="text-muted">새 주문 : 2건</p>
+              <p className="text-muted">신규 주문 : {orders?.filter(o => o.status === "대기").length || 0}건</p>
               <button className="btn btn-success w-100">확인하기</button>
             </div>
           </div>
@@ -87,7 +102,7 @@ const AdminPage = () => {
             style={{cursor:'pointer'}}>
               <h1 className="display-4">👥</h1>
               <h4 className="fw-bold">회원 관리</h4>
-              <p className="text-muted">가입 유저 : 15명</p>
+              <p className="text-muted">가입 유저 : {userCount}명</p>
               <button className="btn btn-warning w-100">권한설정</button>
             </div>
           </div>
@@ -110,7 +125,7 @@ const AdminPage = () => {
       {/* [CASE 2: 각 세부 관리 화면] */}
       {view === 'products' && <ProductManager />}
       {view === 'orders' && <OrderManager/>}
-      {view === 'users' && <div className="p-5 bg-white shadow rounded">회원 관리 준비 중...</div>}
+      {view === 'users' && <UserManager/>}
       {view === 'stats' && <div className="p-5 bg-white shadow rounded">통계 분석 준비 중...</div>}
 
     </div>

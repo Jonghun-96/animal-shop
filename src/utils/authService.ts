@@ -17,7 +17,11 @@ export function signup(inputId, inputPassword) {
     };
   }
 
-  const newUser = { userId: inputId, password: inputPassword };
+  const newUser = { 
+    userId: inputId, 
+    password: inputPassword, 
+    status: 'active'
+  };
   saveUsers([...users, newUser]);
 
   return {
@@ -55,15 +59,22 @@ export function login(inputId: string, inputPassword: string): LoginResult {
     return { success: false, message: "비밀번호가 틀렸습니다" };
   }
 
-  if (user.isActive === false) {
-    if (user.isActive === false) {
-      return { 
-        success: false, 
-        role: 'USER', 
-        message: "탈퇴한 계정입니다. 고객센터에 문의하세요." 
-      };
-    }
-    return;
+  if (user.status === 'withDrawn') {
+    
+    return { 
+      success: false, 
+      role: 'USER', 
+      message: "탈퇴한 계정입니다. 고객센터에 문의하세요." 
+    };
+  }
+
+  if (user.status === 'banned') {
+
+    return { 
+      success: false, 
+      role: 'USER', 
+      message: "운영 정책에 의해 정지된 계정입니다." 
+    };
   }
 
   setLoginUser(inputId);

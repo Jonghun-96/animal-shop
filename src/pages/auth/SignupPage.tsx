@@ -4,6 +4,8 @@ import { signup } from '../../utils/authService';
 import { Button, Container, Card, Form } from 'react-bootstrap';
 import './SignupPage.css';
 import { toast } from 'react-hot-toast';
+import { addUser } from '@/store/authSlice';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -19,6 +21,8 @@ function SignupPage(){
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPw, setShowPw] = useState(false);
+  const dispatch = useDispatch();
+
   
 
   const isIdLengthValid = inputId.length >= MIN_ID_LENGTH;
@@ -36,6 +40,9 @@ function SignupPage(){
 
 
   const handleSignUp = (e) => {
+
+
+
 
     if (e) e.preventDefault();
     const result = signup(inputId, password);
@@ -55,8 +62,9 @@ function SignupPage(){
       toast.error(result?.message || '회원가입에 실패했습니다 😢');
       return;
     }
-    
+
     toast.success('회원가입 완료! 🎉');
+    window.location.reload;
 
     setTimeout(() => {
       navigate('/login');

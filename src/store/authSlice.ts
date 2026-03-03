@@ -29,17 +29,26 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+
+    addUser(state, action: PayloadAction<UserInfo>) {
+      state.users.push(action.payload);
+      
+      localStorage.setItem('users', JSON.stringify(state.users));
+    },
+
     setUser(state, action: PayloadAction<UserInfo>) {
       state.loginUser = action.payload;
     },
+    
     clearUser(state) {
       state.loginUser = null;
     },
+
     deleteAccount(state, action: PayloadAction<string>) {
       const targetId = action.payload;
       
       state.users = state.users.map(user => 
-        user.userId === targetId ? { ...user, isActive: false } : user
+        user.userId === targetId ? { ...user, status: 'withDrawn' } : user
       );
       localStorage.setItem('users', JSON.stringify(state.users));
 
@@ -48,9 +57,10 @@ const authSlice = createSlice({
         localStorage.removeItem('loginUser');
       }
     },
+
     changePassword(state, action) {
 
-      const { newPw } = action.payload; 
+      const { userId, newPw } = action.payload; 
       const currentUserId = state.loginUser?.userId;
 
       if (currentUserId) {
@@ -64,11 +74,24 @@ const authSlice = createSlice({
           localStorage.setItem('users', JSON.stringify(state.users));
         }
       }
+    },
+
+    updateUserStatus(state, action) {
+
+      const { userId, status, isActive } = action.payload;
+      const userToUpdate = state.users.find((u) => u.userId === userId);
+
+      if (userToUpdate) {
+      
+        userToUpdate.status = status;
+
+        localStorage.setItem('petbit_users', JSON.stringify(state.users));
+      }
     }
 
   },
 });
 
 
-export const { setUser, clearUser, deleteAccount, changePassword } = authSlice.actions;
+export const { addUser, setUser, clearUser, deleteAccount, changePassword, updateUserStatus } = authSlice.actions;
 export default authSlice.reducer;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Table, Badge, Button, Row, Col, Card, Form } from 'react-bootstrap';
+import { addOrder, updateStatus } from '@/store/orderSlice';
 
 const OrderManager = () => {
   
@@ -9,12 +10,14 @@ const OrderManager = () => {
   const [orders, setOrders] = useState<any[]>([]);  
   const [filter, setFilter] = useState('전체');
 
+  const reduxOrders = useSelector((state: any) => state.order);
 
   useEffect(() => {
     const savedOrders = localStorage.getItem('petbit_orders');
     if (savedOrders) {
       setOrders(JSON.parse(savedOrders));
     }
+    setOrders(reduxOrders)
   }, []);
 
 

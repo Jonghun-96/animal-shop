@@ -24,6 +24,23 @@ const AdminPage = () => {
   const allUsers = useSelector((state: any) => state.auth.users) || [];
   const userCount = allUsers?.length || 0;
 
+  const reduxOrders = useSelector((state: any) => state.order.items || state.order);
+
+  useEffect(() => {
+    
+    if (reduxOrders && reduxOrders.length > 0) {
+      setOrders(reduxOrders);
+    } else {
+      const savedOrders = localStorage.getItem('petbit_orders');
+      if (savedOrders) {
+        setOrders(JSON.parse(savedOrders));
+      }
+    }
+  }, [reduxOrders, view]);
+
+
+
+
   useEffect(() => {
     const savedOrders = localStorage.getItem('petbit_orders');
 

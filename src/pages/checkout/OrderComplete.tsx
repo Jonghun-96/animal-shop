@@ -4,7 +4,7 @@ import { CheckCircleFill } from 'react-bootstrap-icons';
 import './OrderComplete.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addOrder } from '@/store/orderSlice';
+import { addOrder, updateStatus } from '@/store/orderSlice';
 
 
 function OrderComplete() {

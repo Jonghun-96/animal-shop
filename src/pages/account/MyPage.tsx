@@ -30,8 +30,7 @@ function MyPage() {
 
 
   const user = useSelector((state: RootState) => state.auth.user);
-  
-  
+
 
   const cartItems = useSelector((state: RootState) => state.cart) || [];
   const wishlist = useSelector((state: RootState) => state.wishlist) || [];
@@ -49,6 +48,13 @@ function MyPage() {
   const deleteAccount = () => {
     navigate('/deleteAccount');
   } 
+
+  const allOrders = useSelector((state: RootState) => state.order) || [];
+  const currentUserId = loginUser?.userId;
+  const myOrders = allOrders.filter((order: any) => 
+    loginUser?.userId ? order.userId === loginUser.userId : false
+  );
+
 
   return (
     <Container style={{ marginTop: "120px", marginBottom: "80px", maxWidth: "1050px" }}>
@@ -248,25 +254,30 @@ function MyPage() {
             </h5>
           </Card.Header>
           <Card.Body>
-            {orderList.length > 0 ? (
-              [...orderList].reverse().map((order) => (
+            
+            {myOrders && myOrders.length > 0 ? (
+              
+              [...myOrders].reverse().map((order) => (
                 <div key={order.orderId} className="mb-4 p-3 border rounded">
                   <div className="d-flex justify-content-between small text-muted mb-2 border-bottom pb-2">
                     <span>주문일 : {order.date}</span>
                     <span>주문번호 : {order.orderId}</span>
                   </div>
-                  {order.items.map((item) => (
+                  
+                  {order.items.map((item: any) => (
                     <div key={item.id} className="d-flex align-items-center mb-2">
                       <div className="flex-grow-1 small">{item.name}</div>
                       <div className="fw-bold small">{item.price.toLocaleString()}원</div>
                     </div>
                   ))}
+
                   <div className="text-end mt-2 pt-2 border-top fw-bold">
                     총 결제 금액 : {(order.amount || 0).toLocaleString()}원
                   </div>
                 </div>
               ))
             ) : (
+              // 2. myOrders가 비어있으면 이제 이 멘트가 정상적으로 나옵니다.
               <div className="text-center py-5 text-muted">주문한 내역이 없어요🐾</div>
             )}
           </Card.Body>

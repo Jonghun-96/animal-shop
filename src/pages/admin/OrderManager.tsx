@@ -148,7 +148,7 @@ useEffect(() => {
           </thead>
           <tbody>
             {filteredOrders.length > 0 ? (
-              filteredOrders.reverse().map((order) => (
+              filteredOrders.map((order) => (
 
                 <tr key={order.orderId}>
                   <td className="text-muted small">#{order.orderId}</td>

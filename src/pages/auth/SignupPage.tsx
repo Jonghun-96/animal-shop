@@ -41,9 +41,6 @@ function SignupPage(){
 
   const handleSignUp = (e) => {
 
-
-
-
     if (e) e.preventDefault();
     const result = signup(inputId, password);
 
@@ -57,11 +54,19 @@ function SignupPage(){
       return;
     }
 
-
     if (!result || !result.success) {
       toast.error(result?.message || '회원가입에 실패했습니다 😢');
       return;
     }
+
+    dispatch(addUser({
+      userId: inputId,
+      password: password,
+      status: 'active',
+      role: 'USER'
+    }));
+
+
 
     toast.success('회원가입 완료! 🎉');
     window.location.reload;

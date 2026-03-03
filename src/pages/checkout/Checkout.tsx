@@ -5,6 +5,9 @@ import { useState } from 'react';
 import { clearCart } from '../../store/cartSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
+import { addOrder } from '@/store/orderSlice';
+
+
 
 function Checkout() {
   const dispatch = useDispatch();
@@ -12,11 +15,13 @@ function Checkout() {
   const cart = useSelector((state) => state.cart);
 
   const allOrders = JSON.parse(localStorage.getItem('petbit_orders') || '[]');
-  const currentOrder = allOrders[allOrders.length - 1] || {};
+  const currentOrder = allOrders[0] || {};
   const checkoutItems = currentOrder.items || [];
   const totalPrice = currentOrder.amount || 0;
 
-  
+  const loginUserData = JSON.parse(localStorage.getItem('loginUser'));
+  const currentUser = loginUserData ? loginUserData.userId : null;
+
   const shippingFee = totalPrice >= 30000 || totalPrice === 0 ? 0 : 3000;
   const finalPrice = totalPrice + shippingFee;
 
@@ -49,41 +54,34 @@ function Checkout() {
   };
 
   const handlePayment = () => {
-    console.log("1. 결제 버튼 클릭됨"); // 로그 찍히는지 확인
+    console.log("1. 결제 버튼 클릭됨");
     console.log("현재 정보:", { finalPrice, buyerInfo, checkoutItems });
 
     if (window.confirm(`${finalPrice.toLocaleString()}원을 결제하시겠습니까?`)) {
       console.log("2. 확인창 승인됨");
 
       try {
-        // 혹시 여기서 cart가 정의 안 되어 있을 수 있으니 checkoutItems를 활용하세요!
-        const orderedItems = [...checkoutItems]; 
-
-        const allOrders = JSON.parse(localStorage.getItem('petbit_orders') || '[]');
-        
-        if (allOrders.length > 0) {
-          const lastIndex = allOrders.length - 1;
-          allOrders[lastIndex] = {
-            ...allOrders[lastIndex],
-            buyerName: buyerInfo.name,
-            address: `${buyerInfo.address} ${buyerInfo.detailAddress}`,
-            amount: finalPrice,
-            status: '대기',
-            date: new Date().toLocaleString()
-          };
-          
-          localStorage.setItem('petbit_orders', JSON.stringify(allOrders));
-          console.log("3. 스토리지 저장 성공");
-        }
+        // 1. 완벽한 새 주문 객체 생성 (기존 dummyOrders 양식과 동일하게!)
+        const newOrder = {
+          orderId: Date.now(), // 고유 번호 생성
+          userId: currentUser || '비회원',
+          buyerName: buyerInfo.name,
+          address: `${buyerInfo.address} ${buyerInfo.detailAddress}`,
+          amount: finalPrice,
+          date: new Date().toLocaleString(),
+          status: '대기',
+          items: cart, // 현재 리덕스 장바구니에 담긴 아이템들
+        };
 
         dispatch(clearCart());
+        dispatch(addOrder(newOrder));
         console.log("4. 장바구니 비우기 성공");
         
         toast.success('주문이 완료되었습니다! 🎉');
         
         setTimeout(() => {
           console.log("5. 페이지 이동 시도");
-          navigate('/orderComplete', { state: allOrders[allOrders.length - 1] });
+          navigate('/orderComplete', { state: newOrder });
         }, 1500);
 
       } catch (error) {

@@ -14,21 +14,29 @@ interface AuthState {
   users: UserInfo[];
 }
 
-const initialState: AuthState = {
-  loginUser: localStorage.getItem('loginUser')
-  ? JSON.parse(localStorage.getItem('loginUser')!)
-  : null,
+const dummyUsers = [
+  { userId: 'Chulsoo', role: 'USER', status: 'active' },
+  { userId: 'dog_lover', role: 'USER', status: 'active' },
+  { userId: 'cat_master', role: 'USER', status: 'banned' }, 
+  { userId: 'bye_bye', role: 'USER', status: 'active' },
+  { userId: 'minji', role: 'USER', status: 'withDrawn' },
+];
 
-  users: localStorage.getItem('users')
-    ? JSON.parse(localStorage.getItem('users')!)
-    : [
-        { userId: 'Chulsoo', role: 'USER', status: 'active' },
-        { userId: 'dog_lover', role: 'USER', status: 'active' },
-        { userId: 'cat_master', role: 'USER', status: 'banned' }, 
-        { userId: 'bye_bye', role: 'USER', status: 'active' },
-        { userId: 'minji', role: 'USER', status: 'withDrawn' },
-    ]
+const savedLoginUser = localStorage.getItem('loginUser');
+const savedUsers = localStorage.getItem('users');
+
+const initialState: AuthState = {
+  loginUser: savedLoginUser ? JSON.parse(savedLoginUser) : null,
+
+  users: savedUsers ? JSON.parse(savedUsers) : dummyUsers
 };
+
+
+if (!savedUsers) {
+  localStorage.setItem('users', JSON.stringify(dummyUsers));
+}
+
+
 
 
 const authSlice = createSlice({
@@ -37,6 +45,7 @@ const authSlice = createSlice({
   reducers: {
 
     addUser(state, action: PayloadAction<UserInfo>) {
+
       state.users.push(action.payload);
       
       localStorage.setItem('users', JSON.stringify(state.users));

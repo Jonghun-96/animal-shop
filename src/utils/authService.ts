@@ -1,5 +1,7 @@
 
 import { getUsers, saveUsers } from './authStorage';
+import { addUser } from '@/store/authSlice';
+
 
 
 
@@ -17,12 +19,6 @@ export function signup(inputId, inputPassword) {
     };
   }
 
-  const newUser = { 
-    userId: inputId, 
-    password: inputPassword, 
-    status: 'active'
-  };
-  saveUsers([...users, newUser]);
 
   return {
     success: true,

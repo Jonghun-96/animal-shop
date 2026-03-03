@@ -1,46 +1,114 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Table, Badge, Button, Row, Col, Card, Form } from 'react-bootstrap';
 
 const OrderManager = () => {
-  // 1. 옵셔널 체이닝(?.)과 기본값([])을 사용하여 에러 방지
-  const orders = useSelector((state) => state.orders?.items || []); 
-  const dispatch = useDispatch();
   
+  const dispatch = useDispatch();
+
+  const [orders, setOrders] = useState<any[]>([]);  
   const [filter, setFilter] = useState('전체');
 
-  // orders가 배열인지 확실히 체크
+
+  useEffect(() => {
+    const savedOrders = localStorage.getItem('petbit_orders');
+    if (savedOrders) {
+      setOrders(JSON.parse(savedOrders));
+    }
+  }, []);
+
+
+  const handleStatusChange = (orderId: any, newStatus: any) => {
+    const updatedOrders = orders.map(order => 
+      order.orderId === Number(orderId) ? { ...order, status: newStatus } : order
+    );
+    
+    setOrders(updatedOrders);
+    localStorage.setItem('petbit_orders', JSON.stringify(updatedOrders));
+    alert(`주문번호 #${orderId} 상태가 [${newStatus}](으)로 변경되었습니다.`);
+  };
+
+
   const filteredOrders = orders.filter(order => {
+    const currentStatus = order.status || 'received';
     if (filter === '전체') return true;
     return order.status === filter;
   });
 
-  const handleStatusChange = (orderId, newStatus) => {
-    // 실제 액션 함수명으로 교체 필요 (예: updateStatus)
-    // dispatch({ type: 'orders/updateStatus', payload: { id: orderId, status: newStatus } });
-    console.log(`${orderId}번 상태 변경: ${newStatus}`);
+  const handleCancelOrder = (orderId: any) => {
+    
+    if (window.confirm("이 주문을 '취소' 처리하시겠습니까? 내역은 보존됩니다.")) {
+      
+      
+      const updatedOrders = orders.map(order => 
+        order.orderId === Number(orderId) ? { ...order, status: '취소' } : order
+      );
+      
+      
+      setOrders(updatedOrders);
+      localStorage.setItem('petbit_orders', JSON.stringify(updatedOrders));
+      
+      alert("주문이 취소 처리되었습니다.");
+    }
   };
+
+
 
   return (
     <div className="p-4">
       <h4 className="fw-bold mb-4">🛒 주문 내역 관리</h4>
 
       <Row className="mb-4 g-3">
-        <Col md={3}>
-          <Card className="text-center border-0 shadow-sm bg-primary text-white">
-            <Card.Body>
-              <div className="small">전체 주문</div>
-              <h3 className="fw-bold">{orders?.length || 0}건</h3>
+        
+        <Col>
+          <Card className="text-center border-0 shadow-sm bg-primary text-white h-100">
+            <Card.Body className="d-flex flex-column justify-content-center">
+              <div className="small opacity-75">전체 주문</div>
+              <h4 className="fw-bold mb-0">{orders?.length || 0}건</h4>
             </Card.Body>
           </Card>
         </Col>
-        <Col md={3}>
-          <Card className="text-center border-0 shadow-sm bg-warning text-dark">
+
+        <Col>
+          <Card className="text-center border-0 shadow-sm bg-warning text-dark h-100">
             <Card.Body>
-              <div className="small">배송 대기</div>
-              <h3 className="fw-bold">
-                {orders?.filter(o => o.status === '대기').length || 0}건
-              </h3>
+              <div className="small opacity-75">배송 대기</div>
+              <h4 className="fw-bold mb-0">
+                {orders?.filter(o => o.status === 'received' || o.status === '대기').length || 0}건
+              </h4>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col>
+          <Card className="text-center border-0 shadow-sm bg-info text-white h-100">
+            <Card.Body>
+              <div className="small opacity-75">배송 중</div>
+              <h4 className="fw-bold mb-0">
+                {orders?.filter(o => o.status === 'shipping' || o.status === '배송중').length || 0}건
+              </h4>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col>
+          <Card className="text-center border-0 shadow-sm bg-success text-white h-100">
+            <Card.Body>
+              <div className="small opacity-75">배송 완료</div>
+              <h4 className="fw-bold mb-0">
+                {orders?.filter(o => o.status === 'completed' || o.status === '완료').length || 0}건
+              </h4>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col>
+          <Card className="text-center border-0 shadow-sm bg-danger text-white h-100">
+            <Card.Body>
+              <div className="small opacity-75">취소된 주문</div>
+              <h4 className="fw-bold mb-0">
+                {orders?.filter(o => o.status === 'cancel' || o.status === '취소').length || 0}건
+              </h4>
             </Card.Body>
           </Card>
         </Col>
@@ -76,35 +144,70 @@ const OrderManager = () => {
           <tbody>
             {filteredOrders.length > 0 ? (
               filteredOrders.map((order) => (
-                <tr key={order.id}>
-                  <td className="text-muted small">#{order.id}</td>
-                  <td className="fw-bold">{order.customer}</td>
-                  <td>{order.itemName}</td>
-                  <td>{(order.totalPrice || 0).toLocaleString()}원</td>
+
+                <tr key={order.orderId}>
+                  <td className="text-muted small">#{order.orderId}</td>
+                  <td className="fw-bold">{order.buyerName}</td>
+                  <td>
+                    {order.items.map((item: any, index: number) => (
+                      <div 
+                        key={item.id || index} 
+                        className="small text-start py-1"
+                        style={{ borderBottom: index === order.items.length - 1 ? 'none' : '1px solid #eee' }}
+                      >
+                        • {item.name} <small className="text-muted">({item.price.toLocaleString()}원)</small>
+                      </div>
+                    ))}
+                  </td>
+                  <td>{(order.amount || 0).toLocaleString()}원</td>
                   <td>
                     <Badge bg={
-                      order.status === '완료' ? 'secondary' : 
+                      order.status === '취소' ? 'danger' :
+                      order.status === '완료' ? 'success' : 
                       order.status === '배송중' ? 'info' : 'warning'
                     }>
                       {order.status}
                     </Badge>
                   </td>
                   <td>
+
                     <div className="d-flex justify-content-center gap-1">
                       <Button 
                         variant="outline-dark" 
                         size="sm"
-                        onClick={() => handleStatusChange(order.id, '배송중')}
+                        onClick={() => handleStatusChange(order.orderId, '배송중')}
                         disabled={order.status !== '대기'}
                       >출고</Button>
+
                       <Button 
                         variant="outline-success" 
                         size="sm"
-                        onClick={() => handleStatusChange(order.id, '완료')}
+                        onClick={() => handleStatusChange(order.orderId, '완료')}
                         disabled={order.status === '완료'}
                       >완료</Button>
+
+                      <Button 
+                        variant="outline-danger" 
+                        size="sm"
+                        onClick={() => handleStatusChange(order.orderId, '대기')}
+                        disabled={order.status === '대기'}
+                      >상태 초기화</Button>
+
+
+
                     </div>
+
                   </td>
+
+                  <td>
+                    <Button 
+                      variant="outline-danger" 
+                      size="sm"
+                      className="px-2 py-0"
+                      onClick={() => handleCancelOrder(order.orderId)}
+                    >주문 취소</Button>
+                  </td>
+
                 </tr>
               ))
             ) : (

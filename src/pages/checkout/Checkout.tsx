@@ -68,7 +68,7 @@ function Checkout() {
             buyerName: buyerInfo.name,
             address: `${buyerInfo.address} ${buyerInfo.detailAddress}`,
             amount: finalPrice,
-            status: 'completed',
+            status: '대기',
             date: new Date().toLocaleString()
           };
           

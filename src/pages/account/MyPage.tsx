@@ -59,7 +59,7 @@ function MyPage() {
   return (
     <Container style={{ marginTop: "120px", marginBottom: "80px", maxWidth: "1050px" }}>
       
-      <Card className="border-0 shadow-sm mb-5 bg-white">
+      <Card className="border-0 shadow-sm mb-5 bg-body">
         <Card.Body className="d-flex align-items-center p-4 mypage-user">
 
           <div className="bg-light p-3 rounded-circle me-4">
@@ -125,7 +125,7 @@ function MyPage() {
 
           {/*  장바구니 섹션 */}
           <Card className="border-0 shadow-sm mb-4 mypage-cart">
-            <Card.Header className="bg-white py-3 border-0 d-flex justify-content-between align-items-center mypage-userhead">
+            <Card.Header className="bg-body py-3 border-0 d-flex justify-content-between align-items-center mypage-userhead">
               <h5 className="mb-0 fw-bold text-primary"><FaCartShopping className="me-2" />장바구니 상품</h5>
               <Badge bg="primary" pill>{totalCount}</Badge>
             </Card.Header>
@@ -153,7 +153,7 @@ function MyPage() {
 
           {/* 관심상품 섹션 */}
           <Card className="border-0 shadow-sm mypage-wish">
-            <Card.Header className="bg-white py-3 border-0 mypage-wishhead">
+            <Card.Header className="bg-body py-3 border-0 mypage-wishhead">
               <h5 className="mb-0 fw-bold text-primary"><FaStar className="me-2" />찜한 목록</h5>
             </Card.Header>
             <Card.Body>

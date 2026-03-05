@@ -6,7 +6,6 @@ import { useState } from 'react';
 import ProductManager from './ProductManager';
 import OrderManager from './OrderManager'; 
 import UserManager from '@/pages/admin/UserManager';
-// import StatManager from './StatManager';
 
 
 
@@ -87,7 +86,7 @@ const AdminPage = () => {
         <div className="row g-4">
 
           {/* 상품 관리 카드 */}
-          <div className="col-md-3">
+          <div className="col-md-4">
             <div 
             className="card p-4 shadow-sm h-100 border-0 bg-body text-center" 
             onClick={() => setView('products')} 
@@ -100,7 +99,7 @@ const AdminPage = () => {
           </div>
 
           {/* 주문 관리 카드 */}
-          <div className="col-md-3">
+          <div className="col-md-4">
             <div 
             className="card p-4 shadow-sm h-100 border-0 bg-body text-center" 
             onClick={() => setView('orders')} 
@@ -113,7 +112,7 @@ const AdminPage = () => {
           </div>
 
           {/* 회원 관리 카드 */}
-          <div className="col-md-3">
+          <div className="col-md-4">
             <div className="card p-4 shadow-sm h-100 border-0 bg-body text-center" 
             onClick={() => setView('users')} 
             style={{cursor:'pointer'}}>
@@ -124,18 +123,7 @@ const AdminPage = () => {
             </div>
           </div>
 
-          {/* 매출 통계 카드 */}
-          <div className="col-md-3">
-            <div 
-            className="card p-4 shadow-sm h-100 border-0 bg-body text-center" 
-            onClick={() => setView('stats')} 
-            style={{cursor:'pointer'}}>
-              <h1 className="display-4">📊</h1>
-              <h4 className="fw-bold">매출 통계</h4>
-              <p className="text-muted">이번 주 분석</p>
-              <button className="btn btn-info text-white w-100">분석하기</button>
-            </div>
-          </div>
+
         </div>
       )}
 
@@ -143,7 +131,6 @@ const AdminPage = () => {
       {view === 'products' && <ProductManager />}
       {view === 'orders' && <OrderManager/>}
       {view === 'users' && <UserManager/>}
-      {view === 'stats' && <div className="p-5 bg-white shadow rounded">통계 분석 준비 중...</div>}
 
     </div>
   );

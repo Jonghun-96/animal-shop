@@ -159,7 +159,7 @@ function Checkout() {
               ))}
             </div>
 
-            <div className="py-3 bg-white">
+            <div className="py-3 bg-body">
               {/* 총 상품 금액 */}
               <div className="d-flex justify-content-between px-4 py-2">
                 <span className="text-muted">총 상품 금액</span>

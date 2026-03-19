@@ -153,7 +153,7 @@ function Detail() {
           </button>
         </div>
       </div>
-    </div> 
+    </div>
 
     <ReviewForm onSubmit={handleAddReview}/>
     <ReviewList reviews={reviews} onDelete={handleDeleteReview}/>

@@ -21,6 +21,7 @@ function Detail() {
 
   const dispatch = useDispatch();
   const { id } = useParams();
+  
 
   const animal = animals.find(a => a.id === Number(id))
 
@@ -29,9 +30,9 @@ function Detail() {
 
   if (!animal) return <div>상품을 찾을 수 없습니다.</div>;
 
-    const loginUserData = localStorage.getItem('loginUser');
-    const userObj = loginUserData ? JSON.parse(loginUserData) : null;
-    const currentUserId = userObj?.userId;
+  const loginUserData = localStorage.getItem('loginUser');
+  const userObj = loginUserData ? JSON.parse(loginUserData) : null;
+  const currentUserId = userObj?.userId;
 
 
   const [reviews, setReviews] = useState<Review[]>(() => {
@@ -40,12 +41,30 @@ function Detail() {
     return saved ? JSON.parse(saved) : [];
   });
   
+
+
   useEffect(() => {
     if (animal) {
       localStorage.setItem(`reviews_${animal.id}`, JSON.stringify(reviews));
     }
   }, [reviews, animal?.id]);
 
+
+
+
+  const [loading, setLoading] = useState(false);
+
+  const handleAddToCart = () => {
+    if (loading) return;
+
+    setLoading(true);
+
+    dispatch(addToCart(animal));
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 300); // 간단하게 중복 클릭 방지용
+  };
 
 
 
@@ -123,9 +142,15 @@ function Detail() {
           </button>
 
 
-          <button className="btn btn-danger" onClick={()=>{
-            dispatch(addToCart(animal));
-          }}>장바구니 담기 <FaCartShopping/></button> 
+          <button style={{ width: '140px' }} className="btn btn-danger" onClick={handleAddToCart} disabled={loading}>
+            {loading ? (
+              "추가 중..." 
+            ) : (
+              <>
+                장바구니 담기 <FaCartShopping/>
+              </>
+            )}
+          </button>
         </div>
       </div>
     </div> 
